@@ -53,9 +53,9 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
     LinearLayout activityGuide;
     @BindView(R.id.back_btn)
     ImageView backBtn;
-    private String[] accountSelects = {"5元(仅限首次)", "10元", "20元", "50元", "100元"};
+    private String[] accountSelects = {"3元(仅限首次)", "10元", "20元", "50元", "100元"};
 
-    private Double[] secletMoney = {5.0, 10.0, 20.0, 50.0, 100.0};
+    private Double[] secletMoney = {3.0, 10.0, 20.0, 50.0, 100.0};
 
     private String withdrawType="";
     private Adapter adaptersex;

@@ -14,22 +14,15 @@
         style="@style/order_cardView_style">
 
       <LinearLayout
+          android:paddingTop="10dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:gravity="center"
-            android:layout_marginLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:background="@color/bg_white"
-            android:layout_gravity="center"
-            android:textColor="@color/bg_yellow"
-            android:text="选择提现方式"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            style="@style/text_down"
+            android:text="选择提现方式" />
         <include layout="@layout/line_gray"/>
         <LinearLayout
             android:paddingTop="10dp"
@@ -101,7 +94,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:layout_gravity="center"
-        android:textColor="@color/bg_yellow"
+        android:textColor="@color/colorPrimary"
         android:text="请按照提现引导流程完成操作即可完成提现"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

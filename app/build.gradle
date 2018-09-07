@@ -53,10 +53,9 @@ android {
             def fileName
             if (outputFile != null && outputFile.name.endsWith('.apk')) {
                 if (variant.buildType.name.equals('release')) {
-                    fileName = "lxz${defaultConfig.versionName}" + ".apk";
+                    fileName = "zyb${defaultConfig.versionName}" + ".apk";
                 } else if (variant.buildType.name.equals('debug')) {
                     fileName = "wangrun_DEBUG${defaultConfig.versionName}.apk"
-
                 }
                 output.outputFile = new File(outputFile.parent, fileName);
             }
@@ -70,7 +69,7 @@ android {
 //    apkOutputFolder = new File("${project.buildDir}/outputs/channels");
         apkOutputFolder = new File("F:/APK/MakeAPK")
         // 定制渠道包的APK的文件名称
-        apkFileNameFormat = 'lexiangzhuan_${channel}.apk';
+        apkFileNameFormat = 'zhuanyueba_${channel}.apk';
         // 渠道配置文件
         channelFile = new File("${project.getProjectDir()}/channel.txt")
     }
@@ -152,15 +151,15 @@ MobSDK {
             }
 
             QQ {
-                appId "1107127253"
-                appKey "zk1UKw4k8rB3RVus"
+                appId "1107755097"
+                appKey "KsIWMs9Q286L0PIy"
                 bypassApproval false
                 shareByAppClient true
             }
 
             QZone {
-                appId "1107127253"
-                appKey "zk1UKw4k8rB3RVus"
+                appId "1107755097"
+                appKey "KsIWMs9Q286L0PIy"
                 bypassApproval false
                 shareByAppClient true
             }

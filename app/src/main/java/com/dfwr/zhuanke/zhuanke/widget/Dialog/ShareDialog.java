@@ -85,8 +85,8 @@ public class ShareDialog extends Dialog {
 
     @OnClick({R.id.iv_close, R.id.iv_wechat, R.id.iv_wechat_circle, R.id.iv_qq, R.id.iv_qq_zone})
     public void onViewClicked(View view) {
-        hashMap.put("AppId","1107127253");
-        hashMap.put("AppKey","zk1UKw4k8rB3RVus");
+        hashMap.put("AppId","1107755097");
+        hashMap.put("AppKey","KsIWMs9Q286L0PIy");
         hashMap.put("BypassApproval","false");
         hashMap.put("ShareByAppClient","true");
 

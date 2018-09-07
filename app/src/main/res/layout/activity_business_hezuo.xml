@@ -22,22 +22,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
    </android.support.v7.widget.CardView>
-    <TextView
-        android:textSize="20sp"
-        android:layout_marginLeft="10dp"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/bg_red"
-        android:text="商务合作"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
 
     <include layout="@layout/line_gray"/>
 
     <android.support.v7.widget.CardView
+        android:layout_marginTop="20dp"
         style="@style/order_cardView_style">
+        <TextView
+            style="@style/text_down"
+            android:text="商务合作"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"/>
+        <include layout="@layout/line_gray"/>
         <RelativeLayout
+            android:layout_marginTop="30dp"
             android:id="@+id/rl_add_qq"
             android:gravity="center_vertical"
             android:padding="10dp"

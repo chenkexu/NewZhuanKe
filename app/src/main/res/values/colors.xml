@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#0073F6</color>
-    <color name="colorPrimaryDark">#0073F6</color>
-    <color name="colorAccent">#0073F6</color>
+    <color name="colorPrimary">#EC5B05</color>
+    <color name="colorPrimaryDark">#EC5B05</color>
+    <color name="colorAccent">#EC5B05</color>
 
     <color name="CN6">#e2e2e2</color>
     <color name="CN7">#fafafa</color>
@@ -43,12 +43,12 @@
     <color name="alpha_black">#22000000</color>
     <color name="bg_orange">#f8891d</color>
     <color name="bg_blue">#01acf1</color>
-    <color name="bg_yellow">#f9b62b</color>
+    <color name="bg_yellow">#EC5B05</color>
     <color name="bg_translucent_white">#F0FFFFFF</color>
     <color name="bg_top_or_bottom">#F7F8F7</color>
     <color name="bg_guide">#292C29</color>
     <color name="bg_white">#FFFFFF</color>
-    <color name="bg_red">#F2675C</color>
+    <color name="bg_red">#EC5B05</color>
     <color name="grey_dark">#ff404850</color>
 
     <color name="white_transparent_cc">#CCffffff</color>  <!--不透明度80%-->

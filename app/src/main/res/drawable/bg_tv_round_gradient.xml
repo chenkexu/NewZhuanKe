@@ -3,8 +3,8 @@
 
     <!--渐变色-->
     <gradient
-        android:startColor="#385FE3"
-        android:endColor="#5B96FC"
+        android:startColor="#EC5B05"
+        android:endColor="#EC5B05"
         android:angle="90" />
     <!-- 边框圆角 -->
     <corners

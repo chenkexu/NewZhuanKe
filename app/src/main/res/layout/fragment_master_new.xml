@@ -84,13 +84,8 @@
                         android:padding="5dp">
 
                         <TextView
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginBottom="5dp"
-                            android:textColor="@color/bg_red"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="成为推广大使"
-                            android:textStyle="bold" />
+                            style="@style/text_down"
+                            android:text="成为推广大使" />
                         <include layout="@layout/line_gray"/>
 
 
@@ -144,11 +139,7 @@
                         android:orientation="vertical"
                         android:padding="5dp">
                         <TextView
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginBottom="5dp"
-                            android:textColor="@color/bg_red"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            style="@style/text_down"
                             android:text="收徒统计"
                             android:textStyle="bold" />
                         <include layout="@layout/line_gray"/>
@@ -220,11 +211,7 @@
                     android:padding="10dp">
 
                       <TextView
-                          android:layout_gravity="center_horizontal"
-                          android:layout_marginBottom="5dp"
-                          android:textColor="@color/bg_red"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
+                          style="@style/text_down"
                           android:text="收徒方式"
                           android:textStyle="bold" />
                       <include layout="@layout/line_gray"/>

@@ -139,4 +139,28 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">20dp</item>
     </style>
+
+
+
+
+
+    <style name="text_down">
+
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+
+        <item name="android:drawableLeft">@mipmap/down</item>
+        <item name="android:drawableRight">@mipmap/down</item>
+
+        <item name="android:drawablePadding">10dp</item>
+    </style>
+
+
+
+
+
 </resources>

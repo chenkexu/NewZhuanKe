@@ -90,8 +90,8 @@ public class MeFragment extends BaseTwoFragment<HomeMeView, HomeMePresent<HomeMe
 
     private MyPagerAdapter mAdapter;
 
-    private int[] taskStatusPics = {R.mipmap.icon_money, R.mipmap.icon_rank,
-            R.mipmap.icon_guide, R.mipmap.icon_hezuo
+    private int[] taskStatusPics = {R.mipmap.icon_money,
+            R.mipmap.icon_withdraw,R.mipmap.icon_rank, R.mipmap.icon_hezuo
     };
 
     private String[] myStr = {"开始赚钱", "提现", "排行榜",

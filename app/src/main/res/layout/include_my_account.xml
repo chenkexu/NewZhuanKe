@@ -38,7 +38,7 @@
 
     <ImageView
         android:layout_marginTop="20dp"
-        android:src="@mipmap/commission_icon"
+        android:src="@mipmap/img_withdraw_list"
         android:layout_width="50dp"
         android:layout_height="50dp" />
 
@@ -58,7 +58,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:textColor="@color/bg_red"
+        android:textColor="@color/bg_white"
         android:text="2.98"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

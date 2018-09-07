@@ -139,11 +139,7 @@
             android:padding="5dp">
 
             <TextView
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="5dp"
-                android:textColor="@color/bg_red"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/text_down"
                 android:text="温馨提示"
                 android:textStyle="bold" />
             <include layout="@layout/line_gray"/>

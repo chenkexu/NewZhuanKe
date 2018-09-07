@@ -138,9 +138,6 @@ public class LoginActivity extends BaseActivity {
                 }
 
 
-
-
-
                 map.put("imgId", platform.getDb().getUserIcon() == null ? "" : platform.getDb().getUserIcon());
                 map.put("unionid", wechatBean.getUnionid());
 
@@ -163,7 +160,7 @@ public class LoginActivity extends BaseActivity {
                                 SharedPreferencesTool.getInstance().setObject(result, SharedPreferencesTool.user);
                                 // 这里授权成功跳转到程序主界面了
                                 SharedPreferencesTool.getInstance().putBoolean(SharedPreferencesTool.USER_LOGOUT, false);
-                                hideDefaultLoading();
+//                                hideDefaultLoading();
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 finish();
                             }
