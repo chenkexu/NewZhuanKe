@@ -25,6 +25,7 @@ import com.dfwr.zhuanke.zhuanke.widget.CustomViewPager;
 import com.dfwr.zhuanke.zhuanke.widget.Dialog.ChannelDialog;
 import com.dfwr.zhuanke.zhuanke.widget.Systems;
 import com.flyco.tablayout.SlidingTabLayout;
+import com.hanks.htextview.rainbow.RainbowTextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,10 +43,11 @@ public class NewsFragment extends BaseTwoFragment<NewsView, NewsPresent<NewsView
     @BindView(R.id.add_channel_iv)
     ImageView addChannelIv;
 
+    @BindView(R.id.tv_price)
+    RainbowTextView tv_price;
+
     @BindView(R.id.view_pager)
     CustomViewPager viewPager;
-
-
 
     @BindView(R.id.tl_5)
     SlidingTabLayout mTabLayout;
@@ -58,9 +60,8 @@ public class NewsFragment extends BaseTwoFragment<NewsView, NewsPresent<NewsView
 //    private int currentPage;
 
     private ArrayList<BaseLazyFragment> mFragments = new ArrayList<>();
-
-
     private int currentPage;
+
     private NewsListFragment projectListFragment;
 
     @Override
@@ -153,6 +154,7 @@ public class NewsFragment extends BaseTwoFragment<NewsView, NewsPresent<NewsView
 
 
     private void initViewPagerAndTabLayout(Propertie propertie) {
+        tv_price.setText("分享并阅读文章 可获得"+propertie.getShare_price() +"元/篇奖励哦");
 //        Bundle arguments = getArguments();
 //        Propertie propertie = (Propertie) arguments.getSerializable(Systems.propertie);
 

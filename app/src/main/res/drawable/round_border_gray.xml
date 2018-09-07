@@ -6,7 +6,7 @@
         android:color="#e6e6e6" />
     <!-- 边框圆角 -->
     <corners
-        android:radius="3dp"/>
+        android:radius="30dp"/>
     <solid
         android:color="#D9D9D9"/>
 

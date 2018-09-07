@@ -76,14 +76,24 @@
         <activity android:name=".mvp.view.MyWebView"  android:screenOrientation="portrait"/>
         <activity android:name=".mvp.view.activity.MyStudentListActivity"  android:screenOrientation="portrait"/>
         <activity android:name=".mvp.view.activity.BlackNameActivity"  android:screenOrientation="portrait"/>
-      <!--  <activity android:name=".mvp.view.activity.TestActivity"  android:screenOrientation="portrait"/>-->
+        <activity android:name=".mvp.view.activity.MyProfitActivity"  android:screenOrientation="portrait"/>
 
+
+
+      <!--  <activity android:name=".mvp.view.activity.TestActivity"  android:screenOrientation="portrait"/>-->
+    <!--    <activity
+            android:launchMode="singleTop"
+            android:name="cn.orientdata.zhuanke.wxapi.WXEntryActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />-->
 
 
         <!-- 适配7.0 -->
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.dfwr.zhuanke.zhuanke.fileProvider"
+            android:authorities="cn.orientdata.zhuanke.fileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

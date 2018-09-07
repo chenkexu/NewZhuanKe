@@ -27,7 +27,7 @@
         android:id="@+id/et_auth_code"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@mipmap/icon_login_auth_code_hint"
+        android:drawableLeft="@mipmap/icon_code"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
         android:hint="请输入短信验证码"

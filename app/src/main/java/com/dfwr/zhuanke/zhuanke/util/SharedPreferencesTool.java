@@ -48,6 +48,9 @@ public class SharedPreferencesTool {
     public static final String alipay_name ="alipay_name";//支付宝提现用户名
 
 
+    public static final String current_date ="current_date";//支付宝提现用户名
+
+
 
 
 

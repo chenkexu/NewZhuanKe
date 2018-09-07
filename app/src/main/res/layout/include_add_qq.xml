@@ -10,6 +10,20 @@
 
 
     <TextView
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:drawableLeft="@mipmap/voice"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/bg_red"
+        android:text="如有问题，请加QQ群：826248193"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
         android:gravity="center"
         android:id="@+id/tv_add_qq"
         android:background="@drawable/btn_round3"
@@ -17,18 +31,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:textColor="@color/bg_white"
-        android:text="一键加入QQ群"
+        android:text="一键加群"
         android:layout_width="200dp"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:textColor="@color/bg_red"
-        android:text="（群号：204019624）"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
 </LinearLayout>

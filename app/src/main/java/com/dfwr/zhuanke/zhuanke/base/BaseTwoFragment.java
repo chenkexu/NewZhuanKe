@@ -144,7 +144,8 @@ public abstract class BaseTwoFragment<V, T extends BasePresenter<V>> extends Fra
         }
 
         progressDialog = new Dialog(mActivity, R.style.loadingDialog);
-        View view = LayoutInflater.from(mActivity).inflate(R.layout.content__roll_loading, null);
+        View view = LayoutInflater.from(mActivity).inflate(R.layout.loading, null);
+//        View view = LayoutInflater.from(mActivity).inflate(R.layout.content__roll_loading, null);
         progressDialog.setContentView(view);
         progressDialog.setCancelable(false);
         progressDialog.setCanceledOnTouchOutside(false);

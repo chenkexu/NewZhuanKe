@@ -1,6 +1,5 @@
 package com.dfwr.zhuanke.zhuanke;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -19,21 +18,23 @@ import com.dfwr.zhuanke.zhuanke.base.BaseActivity;
 import com.dfwr.zhuanke.zhuanke.bean.BannerBean;
 import com.dfwr.zhuanke.zhuanke.bean.Propertie;
 import com.dfwr.zhuanke.zhuanke.bean.UpdateBean;
+import com.dfwr.zhuanke.zhuanke.bean.UserBaseInfo;
 import com.dfwr.zhuanke.zhuanke.mvp.contract.IMsgView;
 import com.dfwr.zhuanke.zhuanke.mvp.event.ChooseFragmentEvent;
 import com.dfwr.zhuanke.zhuanke.mvp.presenter.MsgPresent;
+import com.dfwr.zhuanke.zhuanke.mvp.view.fragment.InformationFragment;
 import com.dfwr.zhuanke.zhuanke.mvp.view.fragment.MasterFragment;
 import com.dfwr.zhuanke.zhuanke.mvp.view.fragment.MeFragment;
 import com.dfwr.zhuanke.zhuanke.mvp.view.fragment.NewsFragment;
-import com.dfwr.zhuanke.zhuanke.mvp.view.fragment.WithDrawFragment;
 import com.dfwr.zhuanke.zhuanke.util.AppManager;
 import com.dfwr.zhuanke.zhuanke.util.CProgressDialogUtils;
+import com.dfwr.zhuanke.zhuanke.util.DateTool;
 import com.dfwr.zhuanke.zhuanke.util.GsonUtils;
 import com.dfwr.zhuanke.zhuanke.util.OkGoUpdateHttpUtil;
 import com.dfwr.zhuanke.zhuanke.util.RxUtil;
+import com.dfwr.zhuanke.zhuanke.util.SharedPreferencesTool;
 import com.dfwr.zhuanke.zhuanke.util.SharedPreferencesUtil;
 import com.dfwr.zhuanke.zhuanke.widget.Dialog.AdvertisementDialog;
-import com.dfwr.zhuanke.zhuanke.widget.Systems;
 import com.orhanobut.logger.Logger;
 import com.vector.update_app.UpdateAppBean;
 import com.vector.update_app.UpdateAppManager;
@@ -44,6 +45,7 @@ import com.vector.update_app.listener.IUpdateDialogFragmentListener;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.Date;
 import java.util.HashMap;
 
 import butterknife.BindView;
@@ -91,8 +93,8 @@ public class MainActivity extends BaseActivity<IMsgView, MsgPresent<IMsgView>> i
 
     private NewsFragment newsFragment;
     private MasterFragment masterFragment;
-    private WithDrawFragment withDrawFragment;
     private MeFragment meFragment;
+    private InformationFragment withDrawFragment;
 
     private Propertie propertie;
 
@@ -218,6 +220,19 @@ public class MainActivity extends BaseActivity<IMsgView, MsgPresent<IMsgView>> i
         tabSelected(llHome);
         getBanner();
         updateDiy();
+
+
+
+
+        //自然日更新新闻已读和未读的状态
+        Date date = (Date) SharedPreferencesTool.getInstance().getObjectFromShare(SharedPreferencesTool.current_date);
+        if (date!=null) {
+            if (DateTool.isSameDate(date,new Date())) {
+
+            }else{
+                SharedPreferencesUtil.removeData(this,SharedPreferencesUtil.MESSAGE_ALREADY_LOOKED);
+            }
+        }
     }
 
 
@@ -227,7 +242,13 @@ public class MainActivity extends BaseActivity<IMsgView, MsgPresent<IMsgView>> i
         if (chooseStr.fragmentStr.equals("0")) {
             selectedFragment(0);
             tabSelected(llHome);
-        }else{
+        }else if (chooseStr.fragmentStr.equals("1")){
+            selectedFragment(1);
+            tabSelected(llCategory);
+        } else if (chooseStr.fragmentStr.equals("2")){
+            selectedFragment(2);
+            tabSelected(llService);
+        } else if (chooseStr.fragmentStr.equals("3")){
             selectedFragment(3);
             tabSelected(llMine);
         }
@@ -321,21 +342,8 @@ public class MainActivity extends BaseActivity<IMsgView, MsgPresent<IMsgView>> i
     @Override
     public void onResume() {
         super.onResume();
-        if (getIntent()!=null){
-            Intent intent = getIntent();
-            String stringExtra = intent.getStringExtra(Systems.from_withdraw);
-            if (stringExtra!=null) {
-                switch (stringExtra){
-                    case "0":
-                        selectedFragment(0);
-                        tabSelected(llHome);
-                        break;
-                    case "1":
-                        break;
-                }
-            }
-
-        }
+        //查询余额
+//        mPresent.getUserInfo();
     }
 
 
@@ -369,6 +377,13 @@ public class MainActivity extends BaseActivity<IMsgView, MsgPresent<IMsgView>> i
         hideFragment(transaction);
         switch (position) {
             case 0:
+                if (meFragment == null) {
+                    meFragment = new MeFragment();
+                    transaction.add(R.id.content, meFragment);
+                } else
+                    transaction.show(meFragment);
+                break;
+            case 1:
                 if (newsFragment == null) {
                     newsFragment = new NewsFragment();
                     Bundle bundle = new Bundle();
@@ -378,7 +393,7 @@ public class MainActivity extends BaseActivity<IMsgView, MsgPresent<IMsgView>> i
                 } else
                     transaction.show(newsFragment);
                 break;
-            case 1:
+            case 2:
                 if (masterFragment == null) {
                     masterFragment = new MasterFragment();
                     Bundle bundle = new Bundle();
@@ -388,16 +403,9 @@ public class MainActivity extends BaseActivity<IMsgView, MsgPresent<IMsgView>> i
                 } else
                     transaction.show(masterFragment);
                 break;
-            case 2:
-                if (meFragment == null) {
-                    meFragment = new MeFragment();
-                    transaction.add(R.id.content, meFragment);
-                } else
-                    transaction.show(meFragment);
-                break;
             case 3:
                 if (withDrawFragment == null) {
-                    withDrawFragment = new WithDrawFragment();
+                    withDrawFragment = new InformationFragment();
                     transaction.add(R.id.content, withDrawFragment);
                 } else
                     transaction.show(withDrawFragment);
@@ -456,5 +464,10 @@ public class MainActivity extends BaseActivity<IMsgView, MsgPresent<IMsgView>> i
     @Override
     public void hideLoading() {
         hideDefaultLoading();
+    }
+
+    @Override
+    public void getUserInfo(UserBaseInfo userBaseInfo) {
+        SharedPreferencesUtil.putStringData(this, SharedPreferencesTool.balance,userBaseInfo.getAccount().getBalance()+"");
     }
 }

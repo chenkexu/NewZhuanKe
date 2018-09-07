@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_marginTop="5dp"
+        android:id="@+id/refreshLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:paddingBottom="5dp"
+                    android:background="@color/bg_white"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp">
+                    <LinearLayout
+                        android:id="@+id/ll_today"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:textColor="@color/black"
+                            android:text="今日徒弟提成（元）"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:id="@+id/tv_today_pupil"
+                            android:textColor="@color/bg_red"
+                            android:textStyle="bold"
+                            android:text="0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <include layout="@layout/line_gray_vertical"/>
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+                        <TextView
+
+                            android:textColor="@color/black"
+                            android:text="累计徒弟提成（元）"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:id="@+id/tv_all__pupil_account"
+                            android:textColor="@color/bg_red"
+                            android:textStyle="bold"
+                            android:text="0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <android.support.v7.widget.CardView
+
+                    style="@style/order_cardView_style">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/bg_white"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/bg_red"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="成为推广大使"
+                            android:textStyle="bold" />
+                        <include layout="@layout/line_gray"/>
+
+
+                        <TextView
+                            android:drawablePadding="5dp"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@mipmap/dui"
+                            android:layout_marginTop="5dp"
+                            android:text="凡在活动期间注册的用户即可成为平台的推广大使"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:drawablePadding="5dp"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@mipmap/dui"
+                            android:layout_marginTop="5dp"
+                            android:text="在活动期间邀请好友成为徒弟并下载登录，即可获得现金奖励"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/tv_master_reward"
+                            android:layout_marginTop="5dp"
+                            android:drawablePadding="5dp"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@mipmap/dui"
+                            android:text="徒弟收益达到2元奖励推广大使1元。徒弟首次提现成功奖励推广大使3元"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:drawablePadding="5dp"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@mipmap/dui"
+                            android:id="@+id/tv_master_tips"
+                            android:text="同时享受徒弟30%+徒孙10%提成奖励"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_marginTop="10dp"
+                    style="@style/order_cardView_style">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/bg_white"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+                        <TextView
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/bg_red"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="收徒统计"
+                            android:textStyle="bold" />
+                        <include layout="@layout/line_gray"/>
+                        <LinearLayout
+                            android:paddingTop="5dp"
+                            android:background="@color/bg_white"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp">
+
+                            <LinearLayout
+                                android:id="@+id/ll_today_student"
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:textColor="@color/black"
+                                    android:text="今日收徒（人）"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                                <TextView
+                                    android:layout_marginTop="5dp"
+                                    android:id="@+id/tv_today_account"
+                                    android:textColor="@color/bg_red"
+                                    android:textStyle="bold"
+                                    android:text="0"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            <include layout="@layout/line_gray_vertical"/>
+                            <LinearLayout
+                                android:id="@+id/ll_all_student"
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:textColor="@color/black"
+                                    android:text="累计收徒（人）"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                                <TextView
+                                    android:layout_marginTop="5dp"
+                                    android:id="@+id/tv_all_pupil"
+                                    android:textColor="@color/bg_red"
+                                    android:textStyle="bold"
+                                    android:text="0"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_marginTop="5dp"
+                    style="@style/order_cardView_style">
+
+                  <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/bg_white"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                      <TextView
+                          android:layout_gravity="center_horizontal"
+                          android:layout_marginBottom="5dp"
+                          android:textColor="@color/bg_red"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="收徒方式"
+                          android:textStyle="bold" />
+                      <include layout="@layout/line_gray"/>
+
+                      <android.support.v7.widget.RecyclerView
+                          android:id="@+id/recyclerView"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="5dp"
+                          android:padding="5dp" />
+
+                      <TextView
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text=""
+                        android:textColor="@color/black"/>
+
+                  </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:visibility="gone"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    style="@style/order_cardView_style">
+                 <LinearLayout
+                    android:layout_margin="10dp"
+                    android:padding="10dp"
+                    android:background="@drawable/round_border1"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:text="收徒攻略"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_marginBottom="5dp"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/bg_red"
+                            android:text="1.收徒方式"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="自己建立QQ/微信群拉徒弟加入在赚钱/兼职/学生等QQ群以及社区论坛贴吧分享以上收徒方式，收徒越多，收益越多。"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_marginBottom="5dp"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/bg_red"
+                            android:text="2.收徒收益"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="邀请好友成为徒弟，徒弟提现即获得3元奖励，徒弟转发文章收益成功，永久享受高达30%收益"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <include layout="@layout/include_add_qq" />
+            </LinearLayout>
+
+        </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+
+</LinearLayout>

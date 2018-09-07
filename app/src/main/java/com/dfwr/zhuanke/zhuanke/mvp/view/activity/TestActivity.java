@@ -1,4 +1,3 @@
-/*
 package com.dfwr.zhuanke.zhuanke.mvp.view.activity;
 
 import android.os.Bundle;
@@ -16,10 +15,7 @@ import com.dfwr.zhuanke.zhuanke.util.RxUtil;
 
 import java.util.HashMap;
 
-*/
-/**
- * Created by ckx on 2018/8/14.
- *//*
+
 
 
 public class TestActivity extends AppCompatActivity {
@@ -65,4 +61,3 @@ public class TestActivity extends AppCompatActivity {
 
 
 }
-*/

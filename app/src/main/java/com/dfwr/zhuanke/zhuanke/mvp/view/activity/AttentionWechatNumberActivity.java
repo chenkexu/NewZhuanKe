@@ -50,7 +50,7 @@ public class AttentionWechatNumberActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.tv_copy_name, R.id.tv_add_qq})
+    @OnClick({R.id.tv_copy_name})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_copy_name:
@@ -59,17 +59,15 @@ public class AttentionWechatNumberActivity extends BaseActivity {
                 cm.setText(getResources().getString(R.string.wechat_name));
                 ToastUtils.showShort("公众号已复制");
                 break;
-            case R.id.tv_add_qq:
-                joinQQGroup();
-                break;
         }
     }
 
 
 
     public boolean joinQQGroup() {
-        String key = "qDmYFkk2XtU903xEk2vrPayicCb-lAeh";
+        String key = "jPgBTG3gAQVQklkf9xEWSxpkIaO9hcDt";
         Intent intent = new Intent();
+//        intent.setData(Uri.parse("mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26k%3D" + key));
         intent.setData(Uri.parse("mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26k%3D" + key));
         // 此Flag可根据具体产品需要自定义，如设置，则在加群界面按返回，返回手Q主界面，不设置，按返回会返回到呼起产品界面    //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         try {

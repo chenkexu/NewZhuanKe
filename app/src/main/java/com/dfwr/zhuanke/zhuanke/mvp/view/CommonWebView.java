@@ -10,12 +10,20 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.webkit.WebView;
 
+import com.blankj.utilcode.util.NetworkUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.dfwr.zhuanke.zhuanke.R;
+import com.dfwr.zhuanke.zhuanke.api.ApiManager;
+import com.dfwr.zhuanke.zhuanke.api.BaseObserver;
 import com.dfwr.zhuanke.zhuanke.api.HttpContants;
+import com.dfwr.zhuanke.zhuanke.api.param.ParamsUtil;
+import com.dfwr.zhuanke.zhuanke.api.response.ApiResponse;
 import com.dfwr.zhuanke.zhuanke.base.BaseActivity;
 import com.dfwr.zhuanke.zhuanke.base.BasePresenter;
 import com.dfwr.zhuanke.zhuanke.bean.Article;
 import com.dfwr.zhuanke.zhuanke.bean.UserBean;
+import com.dfwr.zhuanke.zhuanke.util.RxUtil;
+import com.dfwr.zhuanke.zhuanke.util.SystemUtil;
 import com.dfwr.zhuanke.zhuanke.util.UIUtils;
 import com.dfwr.zhuanke.zhuanke.util.UserDataManeger;
 import com.dfwr.zhuanke.zhuanke.wechatshare.GetResultListener;
@@ -27,6 +35,8 @@ import com.orhanobut.logger.Logger;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX;
 
 import java.lang.ref.WeakReference;
+import java.util.Date;
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -63,6 +73,7 @@ public class CommonWebView extends BaseActivity {
         share_host = intent.getStringExtra(Systems.share_host);
         article = (Article) intent.getSerializableExtra(Systems.articleData);
         initView();
+//        initView进入退出效果 注意这里 创建的效果对象是 Explode()
     }
 
 
@@ -162,10 +173,11 @@ public class CommonWebView extends BaseActivity {
 
 
     //分享
-    private void share(String title,String content,int type,Bitmap bitmap,String clickUrl) {
+    private void share(final String title, String content, final int type, Bitmap bitmap, String clickUrl) {
         Logger.d("clickUrl:" +clickUrl+title + content + "bitmap: "+bitmap);
         int wxSceneSession = SendMessageToWX.Req.WXSceneSession; //聊天界面
         int wxSceneTimeline = SendMessageToWX.Req.WXSceneTimeline;//朋友圈
+
         ShareUtils.shareWXReady(new WeakReference(this), title, content, clickUrl, type, bitmap, new GetResultListener() {
             @Override
             public void onError() {
@@ -174,14 +186,63 @@ public class CommonWebView extends BaseActivity {
 
             @Override
             public void onSuccess(Object object) {
-                Logger.d("分享成功");
+                String result = (String) object;
+                Logger.d(result);
+                if (result.equals("success")) {
+                    Logger.d("分享成功");
+                    if (type == SendMessageToWX.Req.WXSceneSession) {
+                        shareSuccess(title,"微信好友");
+                    }else{
+                        shareSuccess(title,"朋友圈");
+                    }
+                }
             }
         });
     }
 
 
 
-        public class WebChromeClient extends android.webkit.WebChromeClient {
+
+    //分享成功回调
+    private void shareSuccess(String title,String sharePosition ){
+        String systemModel = SystemUtil.getSystemModel();
+
+        String systemVersion = SystemUtil.getSystemVersion();
+        String ipAddress = NetworkUtils.getIPAddress(true);
+        String deviceBrand = SystemUtil.getDeviceBrand();
+
+//        Logger.d("手机型号:"+systemModel);
+//        Logger.d("系统版本："+systemVersion);
+//        Logger.d("ipAddress" + ipAddress);
+
+        HashMap<String, Object> map = ParamsUtil.getMap();
+        map.put("ip", ipAddress);
+        map.put("phoneType", deviceBrand + systemModel);
+        map.put("osVersion", systemVersion);
+        map.put("shareDate", (new Date().getTime())+"");
+        map.put("sharePosition", sharePosition);
+        map.put("title", title);
+        ApiManager.getInstence().getApiService().submitShareRecord(ParamsUtil.getParams(map))
+                .compose(RxUtil.<ApiResponse<Object>>rxSchedulerHelper())
+                .subscribe(new BaseObserver<Object>() {
+                    @Override
+                    protected void onSuccees(ApiResponse<Object> t) {
+
+                    }
+
+                    @Override
+                    protected void onFailure(String errorInfo, boolean isNetWorkError) {
+                        ToastUtils.showShort(errorInfo);
+                    }
+                });
+
+
+}
+
+
+
+
+    public class WebChromeClient extends android.webkit.WebChromeClient {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
 //                if (newProgress == 100) {

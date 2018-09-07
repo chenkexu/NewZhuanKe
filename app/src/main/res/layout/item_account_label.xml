@@ -22,7 +22,7 @@
         android:id="@+id/et_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@mipmap/icon_login_account_hint"
+        android:drawableLeft="@mipmap/phone_icon"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
         android:hint="+86请输入手机号"

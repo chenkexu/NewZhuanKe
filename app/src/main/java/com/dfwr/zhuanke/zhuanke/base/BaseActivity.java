@@ -84,7 +84,8 @@ public abstract class  BaseActivity<V, T extends BasePresenter<V>> extends AppCo
         }
 
         progressDialog = new Dialog(this, R.style.loadingDialog);
-        View view = LayoutInflater.from(this).inflate(R.layout.content__roll_loading, null);
+//        View view = LayoutInflater.from(this).inflate(R.layout.content__roll_loading, null);
+        View view = LayoutInflater.from(this).inflate(R.layout.loading, null);
         progressDialog.setContentView(view);
         progressDialog.setCancelable(false);
         progressDialog.setCanceledOnTouchOutside(false);

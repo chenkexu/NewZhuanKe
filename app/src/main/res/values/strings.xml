@@ -1,26 +1,38 @@
 
 <resources>
-    <string name="app_name">乐享转</string>
+    <string name="app_name">转阅吧</string>
     <string name="withdraw_hint">提现需先绑定手机号，再关注微信号才能提现哦!</string>
     <string name="wechat_name">虎策百货</string>
 
 
     <string name="master_reward_tips"><![CDATA[
-    最低<font color="#F50057"><big><big><big>%s</big></big></big></font>元奖励/1人,还可享受提成收益
+    徒弟收益达到<font color="#F50057"><big><big>%1$s</big></big></font>元奖励推广大使<font color="#F50057"><big><big>%2$s</big></big></font>元。
+    徒弟首次提现成功奖励推广大使<font color="#F50057"><big><big>%3$s</big></big></font>元
     ]]>
     </string>
 
+
+
+
+
       <string name="master_profit_tips"><![CDATA[
-    邀请好友成为徒弟，徒弟提现即获得<font color="#F50057"><big><big>%1$d</big></big></font>元奖励，徒弟转发文章收益成功，永久享受高达
-    <font color="#F50057">%2$S</font>收益
+      同时享受徒弟<font color="#F50057"><big>%1$s</big></font>+徒孙<font color="#F50057"><big>%2$s</big></font>提成奖励
+
     ]]>
     </string>
+
+
 
     <string name="my_code_tips"><![CDATA[
     注册即送<font color="#f8891d"><big><big>%1$S</big></big></font>元，\n
     <font color="#f8891d"><big><big>%2$S</big></big></font>元就可以提现秒到账
     ]]>
     </string>
+
+
+
+
+
 
 
     <!--<string name="my_code_tips2"><![CDATA[

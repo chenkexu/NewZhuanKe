@@ -10,14 +10,19 @@ public class Propertie implements Serializable {
     private static final long serialVersionUID = -7421694893430429760L;
 
         /**
-         * student_get_balance_to_teacher : 1
-         * get_balance_money_min : 3
-         * register_reward : 1
-         * student_reward_to_teacher : 1
-         * student_reward_n_to_teacher : 2
-         * student_reward : 20%
-         * share_price : 0.15
-         * grandson_reward : 10%
+
+         "student_get_balance_to_teacher":"3",    徒弟提现，奖励师傅3元
+         "get_balance_money_min":"5",               5元起提现
+         "register_reward":"1",                     注册获取1元
+             "student_reward_to_teacher":"1",
+         "student_reward_n_to_teacher":"2",
+
+         "student_reward":"30%", 徒弟收益
+         "share_price":"0.15",  文章分享价格
+         "grandson_reward":"10%" //徒孙收益
+         *
+         *
+         *
          */
 
         private String student_get_balance_to_teacher;
@@ -30,15 +35,15 @@ public class Propertie implements Serializable {
         private String grandson_reward;
         private String share_host;
 
-    public String getShare_host() {
-        return share_host == null ? "" : share_host;
-    }
+        public String getShare_host() {
+            return share_host == null ? "" : share_host;
+        }
 
-    public void setShare_host(String share_host) {
-        this.share_host = share_host;
-    }
+        public void setShare_host(String share_host) {
+            this.share_host = share_host;
+        }
 
-    public String getStudent_get_balance_to_teacher() {
+        public String getStudent_get_balance_to_teacher() {
             return student_get_balance_to_teacher;
         }
 

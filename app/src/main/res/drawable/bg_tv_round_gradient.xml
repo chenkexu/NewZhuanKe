@@ -8,5 +8,5 @@
         android:angle="90" />
     <!-- 边框圆角 -->
     <corners
-        android:radius="3dp"/>
+        android:radius="30dp"/>
 </shape>

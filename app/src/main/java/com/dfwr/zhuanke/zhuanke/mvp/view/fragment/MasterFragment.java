@@ -4,6 +4,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
@@ -60,10 +61,10 @@ public class MasterFragment extends BaseTwoFragment<IHomeView,HomePresent<IHomeV
     TextView tvTodayStudentNum;
     @BindView(R.id.tv_all_pupil)
     TextView tvAllPupil;
-    @BindView(R.id.tv_today_pupil)
-    TextView tvTodayStudentProfit;
-    @BindView(R.id.tv_all__pupil_account)
-    TextView tvAllStudentPofit;
+//    @BindView(R.id.tv_today_pupil)
+//    TextView tvTodayStudentProfit;
+//    @BindView(R.id.tv_all__pupil_account)
+//    TextView tvAllStudentPofit;
     @BindView(R.id.tv_master_reward)
     TextView tvMasterReWard;
     @BindView(R.id.tv_master_tips)
@@ -97,29 +98,56 @@ public class MasterFragment extends BaseTwoFragment<IHomeView,HomePresent<IHomeV
 
     @Override
     protected int setLayoutId() {
-        return R.layout.fragment_master;
+        return R.layout.fragment_master_new;
     }
 
 
 
 
-    @OnClick({R.id.ll_today_student, R.id.ll_all_student,R.id.ll_today})
+    @OnClick({R.id.ll_today_student, R.id.ll_all_student,R.id.ll_today,R.id.tv_add_qq})
     public void onViewClicked(View view) {
         Intent intent = new Intent(getActivity(), MyStudentListActivity.class);
         switch (view.getId()) {
             case R.id.ll_today_student:
                 intent.putExtra(Systems.my_student_type, "today");
+                startActivity(intent);
                 break;
             case R.id.ll_all_student:
                 intent.putExtra(Systems.my_student_type, "all");
+                startActivity(intent);
                 break;
             case R.id.ll_today:
                 intent.setClass(getActivity(), LoginActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_add_qq:
+                joinQQGroup();
                 break;
         }
-        startActivity(intent);
     }
 
+
+    /****************
+     * 发起添加群流程。群号：乐享转官方群(826248193) 的 key 为： qDmYFkk2XtU903xEk2vrPayicCb-lAeh
+     * 调用 joinQQGroup(qDmYFkk2XtU903xEk2vrPayicCb-lAeh) 即可发起手Q客户端申请加群 乐享转官方群(826248193)
+     * @param
+     * @return 返回true表示呼起手Q成功，返回fals表示呼起失败
+     ******************/
+    public boolean joinQQGroup() {
+        String key = "jPgBTG3gAQVQklkf9xEWSxpkIaO9hcDt";
+        Intent intent = new Intent();
+//        intent.setData(Uri.parse("mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26k%3D" + key));
+        intent.setData(Uri.parse("mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26k%3D" + key));
+        // 此Flag可根据具体产品需要自定义，如设置，则在加群界面按返回，返回手Q主界面，不设置，按返回会返回到呼起产品界面    //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        try {
+            startActivity(intent);
+            return true;
+        } catch (Exception e) {
+            // 未安装手Q或安装的版本不支持
+            ToastUtils.showShort("未安装手Q或安装的版本不支持");
+            return false;
+        }
+    }
 
 
 
@@ -186,6 +214,8 @@ public class MasterFragment extends BaseTwoFragment<IHomeView,HomePresent<IHomeV
                         type = "3";
                         break;
                 }
+
+//                chooseShareWay(type);
 
                 if (TextUtils.isEmpty(studentLink)) {
                     mPresent.getStudentLink();
@@ -286,23 +316,30 @@ public class MasterFragment extends BaseTwoFragment<IHomeView,HomePresent<IHomeV
 
     private void initPrice(Propertie propertie) {
         if (propertie!=null) {
-            String masterPrice = propertie.getStudent_reward_n_to_teacher();
-            String strIntegration = getResources().getString(R.string.master_reward_tips, masterPrice);
-            tvMasterReWard.setText(Html.fromHtml(strIntegration));
-
-
-            String student_get_balance_to_teacher = propertie.getStudent_get_balance_to_teacher();
             String register_reward = propertie.getRegister_reward();
+
+
+
+            String masterPrice = propertie.getStudent_reward_n_to_teacher();
+            String student_get_balance_to_teacher = propertie.getStudent_get_balance_to_teacher();
             String student_reward_to_teacher = propertie.getStudent_reward_to_teacher();
+
+            String strIntegration = getResources().getString(R.string.master_reward_tips, masterPrice,student_reward_to_teacher,student_get_balance_to_teacher);
+            tvMasterReWard.setText(Html.fromHtml(strIntegration));
 
             int masterwithDrawProfit = Integer.parseInt(student_get_balance_to_teacher) + Integer.parseInt(register_reward) + Integer.parseInt(student_reward_to_teacher);
 
-
             String pricePercent = "40%";
-            String string = getResources().getString(R.string.master_profit_tips, masterwithDrawProfit-1, pricePercent);
+
+
+
+            String percentStr = propertie.getStudent_reward();
+            String percentStr2 = propertie.getGrandson_reward();
+            String string = getResources().getString(R.string.master_profit_tips, percentStr,percentStr2);
             tvMasterTipsStr.setText(Html.fromHtml(string));
         }
     }
+
 
 
     @Override
@@ -329,8 +366,8 @@ public class MasterFragment extends BaseTwoFragment<IHomeView,HomePresent<IHomeV
     public void getUserInfo(UserBaseInfo userBaseInfo) {
         tvAllPupil.setText(userBaseInfo.getStudentNum()+"");
         tvTodayStudentNum.setText(userBaseInfo.getTodayStudentNum()+"");
-        tvTodayStudentProfit.setText(userBaseInfo.getTodayStudentPofit()+"");
-        tvAllStudentPofit.setText(userBaseInfo.getStudentPofit()+"");
+//        tvTodayStudentProfit.setText(userBaseInfo.getTodayStudentPofit()+"");
+//        tvAllStudentPofit.setText(userBaseInfo.getStudentPofit()+"");
         SharedPreferencesUtil.putStringData(getActivity(), SharedPreferencesTool.balance,userBaseInfo.getAccount().getBalance()+"");
     }
 

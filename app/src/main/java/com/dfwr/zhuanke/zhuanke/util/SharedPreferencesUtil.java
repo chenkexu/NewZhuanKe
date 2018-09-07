@@ -31,6 +31,11 @@ public class SharedPreferencesUtil {
 
 	public static final String student_link="student_link";
 
+	public static final String MESSAGE_ALREADY_LOOKED="MESSAGE_ALREADY_LOOKED";
+
+
+
+
 	/**
 	 * 写入String型的数据到。data/data/包名/share_prefs下。map类型存储
 	 * @param context 
@@ -64,7 +69,7 @@ public class SharedPreferencesUtil {
 	public static String getStringData(Context context, String key){
 
 		SharedPreferences pre=context.getSharedPreferences(FILE_NAME,Context.MODE_PRIVATE);
-		return pre.getString(key,null);
+		return pre.getString(key, "");
 	}
 	
 	/**

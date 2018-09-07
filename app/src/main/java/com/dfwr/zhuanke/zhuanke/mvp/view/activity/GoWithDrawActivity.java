@@ -69,6 +69,7 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
     private TextView tv_title;
     private RelativeLayout rl_title;
     private boolean flag;
+    private double doubleBalance;
 
 
     @Override
@@ -78,11 +79,20 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
         ButterKnife.bind(this);
         initView();
         initData();
+
+        doubleBalance = Double.parseDouble(balance);
+        if (doubleBalance < money) {
+            tvSubmit.setText("余额不足");
+            tvSubmit.setEnabled(false);
+            tvSubmit.setBackgroundResource(R.drawable.round_border_gray);
+        }
     }
 
 
     private void initView() {
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+
         adaptersex = new Adapter(Arrays.asList(accountSelects));
         recyclerView.setAdapter(adaptersex);
         adaptersex.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -116,7 +126,9 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
 
 
     private void initData() {
+
         balance = SharedPreferencesUtil.getStringData(this, SharedPreferencesTool.balance);
+
         tvMyAccount.setText(balance);
         Intent intent = getIntent();
 
@@ -147,7 +159,7 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
             case R.id.tv_submit:
                 if (!ButtonUtils.isFastDoubleClick()) {
                     Logger.d("点击了提现提交按钮");
-                    double doubleBalance = Double.parseDouble(balance);
+
                     if (doubleBalance < money) {
                         ToastUtils.showShort("余额不足");
                         return;
@@ -162,9 +174,9 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
                 break;
             case R.id.tv_go_makemoney:
                 ChooseFragmentEvent chooseFragmentEvent = new ChooseFragmentEvent();
-                chooseFragmentEvent.fragmentStr = "0";
+                chooseFragmentEvent.fragmentStr = "1";
                 EventBus.getDefault().post(chooseFragmentEvent);
-                closeActivity(GoWithDrawActivity.class,BindAlipayActivity.class,BindPhoneActivity.class);
+                closeActivity(GoWithDrawActivity.class,BindAlipayActivity.class,BindPhoneActivity.class,MyProfitActivity.class);
                 break;
         }
     }
@@ -192,8 +204,12 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
     public void withdrawSuccess(Object object) {
         ToastUtils.showShort("提交成功");
         ChooseFragmentEvent chooseFragmentEvent = new ChooseFragmentEvent();
-        chooseFragmentEvent.fragmentStr = "1";
+        chooseFragmentEvent.fragmentStr = "0";
         EventBus.getDefault().post(chooseFragmentEvent);
+        Intent intent = new Intent();
+        intent.setClass(this, MyProfitActivity.class);
+        intent.putExtra(Systems.go_activity_type, Systems.activity_type_withdraw_list);
+        startActivity(intent);
         closeActivity(GoWithDrawActivity.class,BindPhoneActivity.class,BindAlipayActivity.class,AttentionWechatNumberActivity.class);
     }
 
@@ -215,7 +231,7 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
             if (isFirstWithDraw) { //首次提现
                 if (choosePosition == layoutPosition) {
                     helper.setTextColor(R.id.tv_title, getResources().getColor(R.color.bg_white));
-                    helper.setBackgroundRes(R.id.rl_title, R.drawable.btn_selec);
+                    helper.setBackgroundRes(R.id.rl_title, R.drawable.bg_tv_round_gradient);
                 } else {
                     helper.setTextColor(R.id.tv_title, getResources().getColor(R.color.text_gray_new));
                     helper.setBackgroundRes(R.id.rl_title, R.drawable.btn_no_selec_border);
@@ -230,7 +246,7 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
                 }else{
                     if (choosePosition == layoutPosition) {
                         helper.setTextColor(R.id.tv_title, getResources().getColor(R.color.bg_white));
-                        helper.setBackgroundRes(R.id.rl_title, R.drawable.btn_selec);
+                        helper.setBackgroundRes(R.id.rl_title, R.drawable.bg_tv_round_gradient);
                     } else {
                         helper.setTextColor(R.id.tv_title, getResources().getColor(R.color.text_gray_new));
                         helper.setBackgroundRes(R.id.rl_title, R.drawable.btn_no_selec_border);

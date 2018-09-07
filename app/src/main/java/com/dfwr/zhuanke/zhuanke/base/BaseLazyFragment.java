@@ -187,7 +187,8 @@ public abstract class BaseLazyFragment<V, T extends BasePresenter<V>> extends Fr
         }
 
         progressDialog = new Dialog(baseActivity, R.style.loadingDialog);
-        View view = LayoutInflater.from(baseActivity).inflate(R.layout.content__roll_loading, null);
+        View view = LayoutInflater.from(baseActivity).inflate(R.layout.loading, null);
+//        View view = LayoutInflater.from(baseActivity).inflate(R.layout.content__roll_loading, null);
         progressDialog.setContentView(view);
         progressDialog.setCancelable(false);
         progressDialog.setCanceledOnTouchOutside(false);

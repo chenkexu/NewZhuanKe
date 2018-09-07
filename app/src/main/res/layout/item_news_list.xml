@@ -15,6 +15,7 @@
     app:cardElevation="1dp">
 
     <LinearLayout
+        android:transitionName="shareView"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
@@ -46,6 +47,7 @@
                 tools:text="【开源完整项目开源完整项目开源完整项目开源完整项目】diycode客户【开源完整项目】diycode客户【开源完整项目】diycode客户端" />
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/tv_price"
                 android:layout_alignParentBottom="true"
                 android:textColor="@color/bg_red"
@@ -58,6 +60,8 @@
                 tools:text="点击分享赚1.5毛" />
 
             <TextView
+
+                android:drawableLeft="@mipmap/eyes"
                 android:id="@+id/tv_watch_sum"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"

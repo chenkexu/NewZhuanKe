@@ -15,11 +15,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <RelativeLayout
+        <LinearLayout
+            android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:padding="10dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
+            android:padding="5dp"
+            android:gravity="center"
+            android:orientation="vertical"
             android:id="@+id/relative1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,14 +32,16 @@
                     android:id="@+id/tvShareRemind"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="分享赚钱"
-                    android:textSize="18sp" />
+                    android:text="通过以下渠道分享文章获得收益"
+                    android:textSize="15sp" />
 
                 <LinearLayout
-                    android:layout_marginRight="30dp"
-                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:layout_below="@id/tvShareRemind"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="horizontal"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                         <ImageView
                             android:id="@+id/ivWechat"
@@ -48,7 +51,7 @@
                             android:gravity="center_horizontal" />
 
                         <ImageView
-                            android:layout_marginLeft="30dp"
+                            android:layout_marginLeft="80dp"
                             android:id="@+id/ivWechatFriend"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -60,9 +63,10 @@
                 </LinearLayout>
 
 
-        </RelativeLayout>
+        </LinearLayout>
 
         <com.dfwr.zhuanke.zhuanke.widget.ProgressWebView
+            android:transitionName="shareView"
             android:layout_below="@id/my_title"
             android:layout_above="@id/relative1"
             android:id="@+id/webView"

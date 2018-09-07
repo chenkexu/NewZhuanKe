@@ -2,9 +2,9 @@
 <resources>
 
     <string-array name="my_profit">
-        <item>文章收益</item>
-        <item>收徒收益</item>
-        <item>徒弟分享收益</item>
+        <item>文章收益记录</item>
+        <item>收徒奖励记录</item>
+        <item>徒弟提成收益记录</item>
     </string-array>
 
 </resources>

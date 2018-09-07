@@ -112,7 +112,7 @@ public class PhoneWithDrawActivity extends BaseActivity {
                 break;
             case R.id.tv_go_makemoney:
                 ChooseFragmentEvent chooseFragmentEvent = new ChooseFragmentEvent();
-                chooseFragmentEvent.fragmentStr = "0";
+                chooseFragmentEvent.fragmentStr = "1";
                 EventBus.getDefault().post(chooseFragmentEvent);
                 finish();
 //                Intent intent = new Intent(this, MainActivity.class);

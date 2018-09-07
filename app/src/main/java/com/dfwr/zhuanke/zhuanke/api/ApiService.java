@@ -2,14 +2,12 @@ package com.dfwr.zhuanke.zhuanke.api;
 
 
 import com.dfwr.zhuanke.zhuanke.api.response.ApiResponse;
-import com.dfwr.zhuanke.zhuanke.api.response.BaseResponse;
 import com.dfwr.zhuanke.zhuanke.bean.Article;
 import com.dfwr.zhuanke.zhuanke.bean.BannerBean;
 import com.dfwr.zhuanke.zhuanke.bean.CheckWithDrawBean;
 import com.dfwr.zhuanke.zhuanke.bean.MyProfit;
 import com.dfwr.zhuanke.zhuanke.bean.MyStudentBean;
 import com.dfwr.zhuanke.zhuanke.bean.ProjectClassifyData;
-import com.dfwr.zhuanke.zhuanke.bean.ProjectListData;
 import com.dfwr.zhuanke.zhuanke.bean.Propertie;
 import com.dfwr.zhuanke.zhuanke.bean.RankBean;
 import com.dfwr.zhuanke.zhuanke.bean.UserBaseInfo;
@@ -24,8 +22,6 @@ import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 /**
@@ -33,30 +29,6 @@ import retrofit2.http.QueryMap;
  */
 
 public interface ApiService {
-
-
-    /**
-     * 项目分类
-     * http://www.wanandroid.com/project/tree/json
-     * @return 项目分类数据
-     */
-    @GET("project/tree/json")
-    Observable<BaseResponse<List<ProjectClassifyData>>> getProjectClassifyData();
-
-    /**
-     * 项目类别数据
-     * http://www.wanandroid.com/project/list/1/json?cid=294
-     * @param page page num
-     * @param cid second page id
-     * @return 项目类别数据
-     */
-    @GET("project/list/{page}/json")
-    Observable<BaseResponse<ProjectListData>> getProjectListData(@Path("page") int page, @Query("cid") int cid);
-
-
-
-
-
 
 
 
@@ -140,9 +112,6 @@ public interface ApiService {
 
 
 
-
-
-
     //查询文章的单价
     @GET("/properties/share_price")
     Observable<ApiResponse<String>> getSharePrice(@QueryMap HashMap<String, Object> map);
@@ -185,4 +154,9 @@ public interface ApiService {
     Observable<ApiResponse<List<MyStudentBean>>> today_student_count(@QueryMap HashMap<String, Object> map);
 
 
+
+    //提交分享成功的记录
+    @FormUrlEncoded
+    @POST("app/user/user_share_article_info")
+    Observable<ApiResponse<Object>> submitShareRecord(@FieldMap HashMap<String, Object> map);
 }

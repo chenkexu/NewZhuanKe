@@ -50,6 +50,18 @@ public final class Systems {
     public static final String my_student_type = "my_student_type";
 
 
+    public static final String my_profit_type = "my_profit_type";
+
+    public static final String go_activity_type = "go_activity_type";
+
+
+    public static final String activity_type_profit = "activity_type_profit";
+    public static final String activity_type_withdraw_list = "activity_type_withdraw_list";
+    public static final String activity_type_withdraw = "activity_type_withdraw";
+
+
+
+
     /**
      * Path
      */

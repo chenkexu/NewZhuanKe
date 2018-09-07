@@ -61,11 +61,11 @@ public class ProfitListFragment extends BaseLazyFragment<ProfitView, ProfitPrese
     }
 
 
-//    @Override
-//    protected void lazyLoad() {
-//        initView();
-//        onRefresh();
-//    }
+    @Override
+    protected void lazyLoad() {
+        initView();
+        onRefresh();
+    }
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -78,27 +78,35 @@ public class ProfitListFragment extends BaseLazyFragment<ProfitView, ProfitPrese
     protected void loadData() {
 
     }
+    public void setRefreshing(final boolean refreshing) {
+        refreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                refreshLayout.setRefreshing(refreshing);
+            }
+        });
+    }
 
 
     @Override
     protected void initData() {
-        mData = new ArrayList<>();
-        String[] mTitles = getResources().getStringArray(R.array.my_profit);
-        String title = getTitle();
-        if (title.equals(mTitles[0])) {
-            type = 1;
-        }else if(title.equals(mTitles[1])){
-            type = 2;
-        }else{
-            type = 3;
-        }
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        refreshLayout.setOnRefreshListener(this);//刷新
-        newsAdapter = new ProfitAdapter(mData,type);
-        newsAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
-        newsAdapter.setOnLoadMoreListener(this, recyclerView);
-        recyclerView.setAdapter(newsAdapter);
-        onRefresh();
+//        mData = new ArrayList<>();
+//        String[] mTitles = getResources().getStringArray(R.array.my_profit);
+//        String title = getTitle();
+//        if (title.equals(mTitles[0])) {
+//            type = 1;
+//        }else if(title.equals(mTitles[1])){
+//            type = 2;
+//        }else{
+//            type = 3;
+//        }
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        refreshLayout.setOnRefreshListener(this);//刷新
+//        newsAdapter = new ProfitAdapter(mData,type);
+//        newsAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
+//        newsAdapter.setOnLoadMoreListener(this, recyclerView);
+//        recyclerView.setAdapter(newsAdapter);
+//        onRefresh();
     }
 
 
@@ -127,6 +135,7 @@ public class ProfitListFragment extends BaseLazyFragment<ProfitView, ProfitPrese
 
     @Override
     public void onRefresh() {
+        setRefreshing(true);
         currentPage = 1;
         newsAdapter.setEnableLoadMore(false);//这里的作用是防止下拉刷新的时候还可以上拉加载
         mPresent.getProfitList(currentPage, PAGE_SIZE,type);
@@ -142,6 +151,7 @@ public class ProfitListFragment extends BaseLazyFragment<ProfitView, ProfitPrese
 
     @Override
     public void getProfitList(List<MyProfit> projectListData) {
+        setRefreshing(false);
         if (projectListData == null || projectListData.size() == 0) {
             newsAdapter.setNewData(null);
             newsAdapter.setEmptyView(R.layout.layout_no_content, (ViewGroup) recyclerView.getParent());
@@ -158,6 +168,7 @@ public class ProfitListFragment extends BaseLazyFragment<ProfitView, ProfitPrese
 
     @Override
     public void getProfitListError(String msg) {
+        setRefreshing(false);
         newsAdapter.setEnableLoadMore(true);
         refreshLayout.setRefreshing(false);
     }

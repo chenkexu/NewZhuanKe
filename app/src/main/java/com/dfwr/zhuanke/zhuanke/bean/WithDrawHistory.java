@@ -47,15 +47,15 @@ public class WithDrawHistory implements Serializable{
             this.uid = uid;
         }
 
-    public Long getCreateDate() {
-        return createDate;
-    }
+        public Long getCreateDate() {
+            return createDate;
+        }
 
-    public void setCreateDate(Long createDate) {
-        this.createDate = createDate;
-    }
+        public void setCreateDate(Long createDate) {
+            this.createDate = createDate;
+        }
 
-    public double getMoney() {
+        public double getMoney() {
             return money;
         }
 

@@ -1,8 +1,10 @@
 package com.dfwr.zhuanke.zhuanke.mvp.view.fragment;
 
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,10 +23,13 @@ import com.dfwr.zhuanke.zhuanke.mvp.contract.NewsListView;
 import com.dfwr.zhuanke.zhuanke.mvp.presenter.NewsListPresent;
 import com.dfwr.zhuanke.zhuanke.mvp.view.CommonWebView;
 import com.dfwr.zhuanke.zhuanke.util.ButtonUtils;
+import com.dfwr.zhuanke.zhuanke.util.SharedPreferencesTool;
+import com.dfwr.zhuanke.zhuanke.util.SharedPreferencesUtil;
 import com.dfwr.zhuanke.zhuanke.widget.Systems;
 import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -75,7 +80,7 @@ public class NewsListFragment extends BaseLazyFragment<NewsListView, NewsListPre
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         refreshLayout.setOnRefreshListener(this);//刷新
         newsAdapter = new NewsAdapter(mData);
-        newsAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
+        newsAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         newsAdapter.setOnLoadMoreListener(this, recyclerView);
         recyclerView.setAdapter(newsAdapter);
         Bundle bundle = getArguments();
@@ -85,13 +90,30 @@ public class NewsListFragment extends BaseLazyFragment<NewsListView, NewsListPre
         newsAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                String alreadyLook = SharedPreferencesUtil.getStringData(getActivity(), SharedPreferencesUtil.MESSAGE_ALREADY_LOOKED);
                 List<Article> data = newsAdapter.getData();
                 Article feedArticleData = data.get(position);
+
+
+                if (!alreadyLook.contains(feedArticleData.getAid() + "")) {//如果不存在已读的字符串中
+                    SharedPreferencesUtil.putStringData(getActivity(), SharedPreferencesUtil.MESSAGE_ALREADY_LOOKED, alreadyLook + feedArticleData.getAid() + ",");
+//                    SharedPreferencesUtil.putStringData();
+                    SharedPreferencesTool.getInstance().setObject(new Date(), SharedPreferencesTool.current_date);
+                    //刷新适配器
+                    newsAdapter.notifyDataSetChanged();
+                }
+
+
                 Intent intent = new Intent(getActivity(), CommonWebView.class);
                 intent.putExtra(Systems.share_host, share_host);
                 intent.putExtra(Systems.articleData, feedArticleData);
                 if (!ButtonUtils.isFastDoubleClick()) {
-                    startActivity(intent);
+                    if (!Build.MANUFACTURER.contains("samsung") && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(), view, "shareView");
+                        startActivity(intent, options.toBundle());
+                    } else {
+                        startActivity(intent);
+                    }
                 }
             }
         });

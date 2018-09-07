@@ -9,12 +9,12 @@
         android:layout_marginBottom="5dp"
         android:gravity="center"
         android:id="@+id/rl_title"
-        android:background="@drawable/btn_selec"
+        android:background="@drawable/bg_tv_round_gradient"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:layout_width="150dp"
+        android:layout_width="300dp"
         android:layout_height="match_parent">
         <TextView
             android:gravity="center"

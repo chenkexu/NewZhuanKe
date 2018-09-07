@@ -7,14 +7,14 @@ import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.dfwr.zhuanke.zhuanke.MainActivity;
 import com.dfwr.zhuanke.zhuanke.R;
 import com.dfwr.zhuanke.zhuanke.base.BasePermissionActivity;
 import com.dfwr.zhuanke.zhuanke.util.SharedPreferencesTool;
-
-
-
+import com.dfwr.zhuanke.zhuanke.util.SystemUtil;
+import com.orhanobut.logger.Logger;
 
 
 /**
@@ -42,7 +42,22 @@ public class GuideActivity extends BasePermissionActivity {
 
                 }
             }, 1000);
-        }
+
+        String systemModel = SystemUtil.getSystemModel();
+
+        String systemVersion = SystemUtil.getSystemVersion();
+        String ipAddress = NetworkUtils.getIPAddress(true);
+        String deviceBrand = SystemUtil.getDeviceBrand();
+
+        Logger.d("手机型号:"+systemModel);
+        Logger.d("系统版本："+systemVersion);
+        Logger.d("ipAddress" + ipAddress);
+
+
+
+
+
+    }
 
 
     @Override

@@ -12,6 +12,7 @@ import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.View;
 
+import com.blankj.utilcode.util.AppUtils;
 import com.dfwr.zhuanke.zhuanke.R;
 import com.dfwr.zhuanke.zhuanke.wechatshare.AppConfig;
 import com.google.zxing.WriterException;
@@ -72,7 +73,7 @@ public class ShareUtil {
     public Uri savaBitmapUri(Bitmap bitmap){
         Uri imageUri;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            imageUri = FileProvider.getUriForFile(context, "com.dfwr.zhuanke.zhuanke.fileProvider",
+            imageUri = FileProvider.getUriForFile(context, AppUtils.getAppPackageName()+".fileProvider",
                     new File(this.share_img_path));
         } else {
             imageUri = Uri.fromFile(new File(this.share_img_path));
@@ -125,7 +126,7 @@ public class ShareUtil {
     public Uri shareBitmap(String url) {
         Uri imageUri;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            imageUri = FileProvider.getUriForFile(context, "com.dfwr.zhuanke.zhuanke.fileProvider",
+            imageUri = FileProvider.getUriForFile(context, AppUtils.getAppPackageName()+".fileProvider",
                     new File(this.share_img_path));
         } else {
             imageUri = Uri.fromFile(new File(this.share_img_path));
@@ -194,7 +195,7 @@ public class ShareUtil {
     public Uri drawBitmap(String url) {
         Uri imageUri;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            imageUri = FileProvider.getUriForFile(context, "com.dfwr.zhuanke.zhuanke.fileProvider",
+            imageUri = FileProvider.getUriForFile(context, AppUtils.getAppPackageName()+".fileProvider",
                     new File(this.share_img_path));
         } else {
             imageUri = Uri.fromFile(new File(this.share_img_path));

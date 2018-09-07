@@ -54,6 +54,7 @@ public class LoginActivity extends BaseActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,9 +92,9 @@ public class LoginActivity extends BaseActivity {
 
     private void loginWeChat() {
         showDefaultLoading();
-        HashMap<String, Object> hashMap = new HashMap<String, Object>();
-        hashMap.put("AppId", "wxa75cd1b3294dbda4");
-        hashMap.put("AppSecret", "02a13b899babead10f80ecf257a02202");
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("AppId", "wx055b79a81a71b0cb");
+        hashMap.put("AppSecret", "16bbef65347c71433ace880c00790b87");
         hashMap.put("BypassApproval", "false");
         ShareSDK.setPlatformDevInfo(Wechat.NAME, hashMap);
         final Platform wechat = ShareSDK.getPlatform(Wechat.NAME);
@@ -113,7 +114,7 @@ public class LoginActivity extends BaseActivity {
                 Log.d("ShareSDK", "onComplete ---->  登录成功" + platform.getDb().exportData());
                 String json = platform.getDb().exportData();
 
-                Logger.d(json);
+                Logger.d("微信返回的个人信息: "+json);
                 WechatBean wechatBean = GsonUtils.parseJsonToBean(json, WechatBean.class);
                 HashMap<String, Object> map = ParamsUtil.getMap();
 
@@ -121,7 +122,25 @@ public class LoginActivity extends BaseActivity {
 
 //                String stringToUnicode = ConvertCodeUtil.stringToUnicode(platform.getDb().getUserName());
                 map.put("wxName", platform.getDb().getUserName() == null ? "" : platform.getDb().getUserName());
-                map.put("sex", platform.getDb().getUserGender() == null ? "m" : platform.getDb().getUserGender());
+//                map.put("sex", platform.getDb().getUserGender() == null ? "m" : platform.getDb().getUserGender());
+
+
+                // TODO: 2018/8/27 性别传男女
+                if (platform.getDb().getUserGender()==null) {
+                    map.put("sex","男");
+                }else{
+                    Logger.d("获取到的性别是: "+platform.getDb().getUserGender());
+                    if (platform.getDb().getUserGender().equals("m")) {
+                        map.put("sex", "男");
+                    }else{
+                        map.put("sex", "女");
+                    }
+                }
+
+
+
+
+
                 map.put("imgId", platform.getDb().getUserIcon() == null ? "" : platform.getDb().getUserIcon());
                 map.put("unionid", wechatBean.getUnionid());
 

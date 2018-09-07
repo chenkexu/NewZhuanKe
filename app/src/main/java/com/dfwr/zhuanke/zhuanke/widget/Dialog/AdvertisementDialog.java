@@ -34,6 +34,7 @@ public class AdvertisementDialog extends Dialog implements View.OnClickListener 
         Glide.with(context)
                 .load(imageUrl)
                 .crossFade()
+                .placeholder(R.mipmap.dialog_error)
                 .priority(Priority.NORMAL) //下载的优先级
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE) //缓存策略
                 .into(imageView);

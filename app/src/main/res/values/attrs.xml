@@ -36,4 +36,11 @@
         <!-- 是否可以拖拽删除徽章 -->
         <attr name="badge_dragable" format="boolean"/>
     </declare-styleable>
+
+
+    <declare-styleable name="monindicator">
+        <attr name="circleRadius" format="dimension" />
+        <attr name="circleSpacing" format="dimension" />
+        <attr name="cycle" format="integer" />
+    </declare-styleable>
 </resources>

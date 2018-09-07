@@ -66,7 +66,7 @@ public class WxShare {
             }
         } catch (Exception localException) {
             Logger.e(Log.getStackTraceString(localException));
-            localOnShareListener.onError();
+            WxShare.localOnShareListener.onError();
         }
     }
 

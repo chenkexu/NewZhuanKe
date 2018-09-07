@@ -101,6 +101,7 @@ public class MeWithDrawPresent<T> extends BasePresenter<MeWithDrawView> {
         map.put("money", money+"");
         map.put("zfbName", zfbName);
         map.put("zfbNum", zfbNum);
+
         ApiManager.getInstence().getApiService().alipayTakeMoney(ParamsUtil.getParams(map))
                 .compose(RxUtil.<ApiResponse<Object>>rxSchedulerHelper())
                 .subscribe(new BaseObserver<Object>() {

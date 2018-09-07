@@ -1,6 +1,7 @@
 package com.dfwr.zhuanke.zhuanke.bean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * Created by ckx on 2018/7/19.
@@ -32,8 +33,11 @@ public class UserBaseInfo implements Serializable {
         private int studentNum;
         private AccountBean account;
 
+
+
         public String getTodayProfit() {
-            return todayProfit;
+            BigDecimal bg = new BigDecimal(Double.parseDouble(todayProfit)).setScale(2, BigDecimal.ROUND_HALF_UP);
+            return bg.doubleValue() +"";
         }
 
         public void setTodayProfit(String todayProfit) {
@@ -41,7 +45,9 @@ public class UserBaseInfo implements Serializable {
         }
 
         public String getTodayStudentPofit() {
-            return todayStudentPofit;
+            BigDecimal bg = new BigDecimal(Double.parseDouble(todayStudentPofit)).setScale(2, BigDecimal.ROUND_HALF_UP);
+            return bg.doubleValue() +"";
+//            return todayStudentPofit;
         }
 
         public void setTodayStudentPofit(String todayStudentPofit) {
@@ -49,7 +55,9 @@ public class UserBaseInfo implements Serializable {
         }
 
         public String getAllWithDrawMoney() {
-            return allWithDrawMoney;
+            BigDecimal bg = new BigDecimal(Double.parseDouble(allWithDrawMoney)).setScale(2, BigDecimal.ROUND_HALF_UP);
+            return bg.doubleValue() +"";
+//            return allWithDrawMoney;
         }
 
         public void setAllWithDrawMoney(String allWithDrawMoney) {
@@ -73,7 +81,9 @@ public class UserBaseInfo implements Serializable {
         }
 
         public String getStudentPofit() {
-            return studentPofit;
+            BigDecimal bg = new BigDecimal(Double.parseDouble(studentPofit)).setScale(2, BigDecimal.ROUND_HALF_UP);
+            return bg.doubleValue() +"";
+//            return studentPofit;
         }
 
         public void setStudentPofit(String studentPofit) {
@@ -248,7 +258,8 @@ public class UserBaseInfo implements Serializable {
             }
 
             public double getBalance() {
-                return balance;
+                BigDecimal bg = new BigDecimal(balance).setScale(2, BigDecimal.ROUND_HALF_UP);
+                return bg.doubleValue();
             }
 
             public void setBalance(double balance) {
