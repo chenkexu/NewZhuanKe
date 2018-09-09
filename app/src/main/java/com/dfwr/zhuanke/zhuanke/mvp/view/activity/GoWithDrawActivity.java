@@ -54,8 +54,9 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
     @BindView(R.id.back_btn)
     ImageView backBtn;
     private String[] accountSelects = {"3元(仅限首次)", "10元", "20元", "50元", "100元"};
-
+    private Double money;
     private Double[] secletMoney = {3.0, 10.0, 20.0, 50.0, 100.0};
+
 
     private String withdrawType="";
     private Adapter adaptersex;
@@ -63,7 +64,6 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
     private String type;
     private String payAccount;
     private String payName;
-    private Double money = 5.0;
     private int choosePosition = 0;
     private String balance;//余额
     private TextView tv_title;
@@ -79,6 +79,7 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
         ButterKnife.bind(this);
         initView();
         initData();
+        money = secletMoney[0];
 
         doubleBalance = Double.parseDouble(balance);
         if (doubleBalance < money) {
@@ -128,7 +129,6 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
     private void initData() {
 
         balance = SharedPreferencesUtil.getStringData(this, SharedPreferencesTool.balance);
-
         tvMyAccount.setText(balance);
         Intent intent = getIntent();
 

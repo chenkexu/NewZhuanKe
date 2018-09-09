@@ -107,7 +107,7 @@ public class MeWithDrawPresent<T> extends BasePresenter<MeWithDrawView> {
                 .subscribe(new BaseObserver<Object>() {
                     @Override
                     protected void onSuccees(ApiResponse<Object> t) {
-                        rankView.hideLoading();
+//                        rankView.hideLoading();
                         rankView.withdrawSuccess(t.getResult());
                     }
 
@@ -132,7 +132,7 @@ public class MeWithDrawPresent<T> extends BasePresenter<MeWithDrawView> {
                     @Override
                     protected void onSuccees(ApiResponse<Object> t) {
                         rankView.withdrawSuccess(t.getResult());
-                        rankView.hideLoading();
+//                        rankView.hideLoading();
                     }
 
                     @Override

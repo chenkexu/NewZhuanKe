@@ -24,7 +24,7 @@ public class QRcodeUtils {
 	public static Bitmap Create2DCode(String str) throws WriterException {
 		Logger.d("二维码链接是:" + str);
 
-		BitMatrix matrix = new MultiFormatWriter().encode(str, BarcodeFormat.QR_CODE, UIUtils.dip2px(250), UIUtils.dip2px(250));
+		BitMatrix matrix = new MultiFormatWriter().encode(str, BarcodeFormat.QR_CODE, UIUtils.dip2px(220), UIUtils.dip2px(220));
 		int width = matrix.getWidth();
 		int height = matrix.getHeight();
 		int[] pixels = new int[(width * height)];

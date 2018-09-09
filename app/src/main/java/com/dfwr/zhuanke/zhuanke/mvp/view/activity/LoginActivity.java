@@ -92,6 +92,8 @@ public class LoginActivity extends BaseActivity {
 
     private void loginWeChat() {
         showDefaultLoading();
+        ivLogin.setImageResource(R.mipmap.icon_login_ing);
+        ivLogin.setEnabled(false);
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("AppId", "wx055b79a81a71b0cb");
         hashMap.put("AppSecret", "16bbef65347c71433ace880c00790b87");
@@ -147,7 +149,7 @@ public class LoginActivity extends BaseActivity {
                     channel = "";
                     map.put("teacherName", channel);
                 }else{
-                    map.put("teacherName", "lexiangzhuan_"+channel);
+                    map.put("teacherName", "zhuanyueba_"+channel);
                 }
 
                 ApiManager.getInstence().getApiService().login(ParamsUtil.getParams(map))
@@ -155,6 +157,7 @@ public class LoginActivity extends BaseActivity {
                         .subscribe(new BaseObserver<UserBean>() {
                             @Override
                             protected void onSuccees(ApiResponse<UserBean> t) {
+                                ivLogin.setEnabled(true);
                                 UserBean result = t.getResult();
                                 // TODO: 2018/8/15 判断返回的user的ID是否为空？
                                 SharedPreferencesTool.getInstance().setObject(result, SharedPreferencesTool.user);
@@ -168,6 +171,7 @@ public class LoginActivity extends BaseActivity {
                             @Override
                             protected void onFailure(String errorInfo, boolean isNetWorkError) {
                                 ToastUtils.showShort(errorInfo);
+                                ivLogin.setEnabled(true);
                                 hideDefaultLoading();
                             }
                         });

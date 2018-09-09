@@ -8,7 +8,7 @@
 
 
 
-
+    <include layout="@layout/line_gray_margin"/>
     <!--文章收益记录-->
     <RelativeLayout
         android:id="@+id/rv_balance_account"
@@ -92,9 +92,9 @@
             app:srcCompat="@mipmap/arrow_right" />
 
     </RelativeLayout>
-
-
     <include layout="@layout/line_gray"/>
+
+    <include layout="@layout/line_gray_margin"/>
     <!--收徒记录-->
     <RelativeLayout
         android:id="@+id/rl_invoice"
@@ -145,8 +145,8 @@
     </RelativeLayout>
 
 
-
     <include layout="@layout/line_gray"/>
+    <include layout="@layout/line_gray_margin"/>
     <!--排行榜-->
     <RelativeLayout
         android:id="@+id/rl_share"

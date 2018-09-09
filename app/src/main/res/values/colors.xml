@@ -32,7 +32,7 @@
 
 
     <color name="tab_bottom_normal">#4A4C4E</color>
-    <color name="tab_bottom_selected">#0073F6</color>
+    <color name="tab_bottom_selected">@color/colorPrimary</color>
     <!-- bg -->
     <color name="light_gray">#999999</color>
     <color name="bg_grey">#212121</color>
