@@ -100,12 +100,13 @@ public  abstract class BaseObserver<T> implements Observer<ApiResponse<T>> {
         }else if(t.getCode() == 101){  //用户不存在
             onFailure("账户异常!!!",false);
             showErrorDialog();
-        }
-        else{
+        } else if(t.getCode() == 500){
+            onFailure("code500服务器错误，请稍后再试。",false);
+        } else{
             ToastUtils.showShort(t.getMessage());
             onFailure(t.getMessage()+"",false);
         }
-        onFailure(t.getMessage()+"",false);
+//        onFailure(t.getMessage()+"",false);
     }
 
 

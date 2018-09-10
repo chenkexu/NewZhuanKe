@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
     android:orientation="vertical">
 
 
@@ -11,9 +12,10 @@
     <include layout="@layout/line_gray_margin"/>
     <!--文章收益记录-->
     <RelativeLayout
+
         android:id="@+id/rv_balance_account"
         android:layout_width="match_parent"
-        android:layout_height="64dp">
+        android:layout_height="60dp">
 
         <ImageView
             android:id="@+id/iv_balance_account"
@@ -46,7 +48,7 @@
     <RelativeLayout
         android:id="@+id/rl_my_commission"
         android:layout_width="match_parent"
-        android:layout_height="64dp">
+        android:layout_height="60dp">
 
         <ImageView
             android:id="@+id/iv_my_commission"
@@ -73,7 +75,7 @@
     <RelativeLayout
         android:id="@+id/rl_commission_withdraw"
         android:layout_width="match_parent"
-        android:layout_height="64dp">
+        android:layout_height="60dp">
 
         <ImageView
             android:id="@+id/iv_commission_withdraw"
@@ -99,7 +101,7 @@
     <RelativeLayout
         android:id="@+id/rl_invoice"
         android:layout_width="match_parent"
-        android:layout_height="64dp">
+        android:layout_height="60dp">
 
         <ImageView
             android:id="@+id/iv_invoice"
@@ -125,7 +127,7 @@
     <RelativeLayout
         android:id="@+id/rl_service"
         android:layout_width="match_parent"
-        android:layout_height="64dp">
+        android:layout_height="60dp">
 
         <ImageView
             android:id="@+id/iv_service"
@@ -151,7 +153,7 @@
     <RelativeLayout
         android:id="@+id/rl_share"
         android:layout_width="match_parent"
-        android:layout_height="64dp">
+        android:layout_height="60dp">
 
         <ImageView
             android:id="@+id/iv_share"

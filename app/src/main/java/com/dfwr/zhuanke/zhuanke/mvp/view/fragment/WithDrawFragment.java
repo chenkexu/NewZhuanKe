@@ -108,6 +108,7 @@ public class WithDrawFragment extends BaseTwoFragment<HomeWithDrawView, HomeWith
             intent1.setClass(getActivity(), BindPhoneActivity.class);
             startActivity(intent1);
         } else if (checkWithDrawBean.getPublicNum() == 0) { //没关注微信
+            // TODO: 2018/9/10
             intent1.setClass(getActivity(), AttentionWechatNumberActivity.class);
             startActivity(intent1);
         } else {

@@ -15,7 +15,6 @@ public class CheckWithDrawBean implements Serializable {
          * num : 1
          * public : 0
          */
-
         private int phoneIsBinding;
         private int num;
         private int publicNum;

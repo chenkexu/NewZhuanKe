@@ -40,6 +40,9 @@ public class WithDrawHistoryAdapter extends BaseQuickAdapter<WithDrawHistory, Ba
             case 3:
                 helper.setText(R.id.tv_name, helper.getLayoutPosition()+1+".已结算");
                 break;
+            case 4:
+                helper.setText(R.id.tv_name, helper.getLayoutPosition()+1+".提现失败");
+                break;
 
         }
         String date = DateTool.stampToDate(item.getCreateDate());
