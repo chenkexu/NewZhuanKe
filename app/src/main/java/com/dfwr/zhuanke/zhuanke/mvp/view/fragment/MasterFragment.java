@@ -127,12 +127,7 @@ public class MasterFragment extends BaseTwoFragment<IHomeView,HomePresent<IHomeV
     }
 
 
-    /****************
-     * 发起添加群流程。群号：乐享转官方群(826248193) 的 key 为： qDmYFkk2XtU903xEk2vrPayicCb-lAeh
-     * 调用 joinQQGroup(qDmYFkk2XtU903xEk2vrPayicCb-lAeh) 即可发起手Q客户端申请加群 乐享转官方群(826248193)
-     * @param
-     * @return 返回true表示呼起手Q成功，返回fals表示呼起失败
-     ******************/
+
     public boolean joinQQGroup() {
         String key = "jPgBTG3gAQVQklkf9xEWSxpkIaO9hcDt";
         Intent intent = new Intent();

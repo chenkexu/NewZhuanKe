@@ -2,6 +2,8 @@ package com.dfwr.zhuanke.zhuanke.application;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 
 import com.blankj.utilcode.util.Utils;
 import com.dfwr.zhuanke.zhuanke.bean.UserBean;
@@ -58,6 +60,11 @@ public class MyApplication extends Application {
 //        });
 
 //        registerToWX();
+
+        Resources res = super.getResources();
+        Configuration config = new Configuration();
+        config.setToDefaults();
+        res.updateConfiguration(config, res.getDisplayMetrics());
     }
 
 

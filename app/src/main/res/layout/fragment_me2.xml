@@ -223,7 +223,6 @@
                             android:layout_height="wrap_content" />
                     </LinearLayout>
                     <LinearLayout
-
                         android:visibility="gone"
                         android:gravity="center"
                         android:layout_weight="1"

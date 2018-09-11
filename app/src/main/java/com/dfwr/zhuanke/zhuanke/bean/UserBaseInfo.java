@@ -22,13 +22,12 @@ public class UserBaseInfo implements Serializable {
          * studentNum : 3
          * account : {"articleMoney":0,"balance":2.84,"frozenAmount":0,"id":1,"shareMoney":0,"todayMoney":0,"uid":1}
          */
-
         private String todayProfit;
-        private String todayStudentPofit;
-        private String allWithDrawMoney;
+        private String todayStudentPofit;  //今日徒弟收益
+        private String allWithDrawMoney;  //累计提现
         private int todayStudentNum;
         private String articleMoney;
-        private String studentPofit;
+        private String studentPofit;     //累计徒弟收益
         private UserBean user;
         private int studentNum;
         private AccountBean account;
@@ -113,6 +112,11 @@ public class UserBaseInfo implements Serializable {
         public void setAccount(AccountBean account) {
             this.account = account;
         }
+
+
+
+
+
 
         public static class UserBean {
             /**

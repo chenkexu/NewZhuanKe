@@ -77,10 +77,10 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_go_withdraw);
         ButterKnife.bind(this);
-        initView();
-        initData();
         money = secletMoney[0];
 
+        initView();
+        initData();
         doubleBalance = Double.parseDouble(balance);
         if (doubleBalance < money) {
             tvSubmit.setText("余额不足");

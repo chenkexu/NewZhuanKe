@@ -23,7 +23,6 @@ import com.dfwr.zhuanke.zhuanke.mvp.contract.HomeMeView;
 import com.dfwr.zhuanke.zhuanke.mvp.event.ChooseFragmentEvent;
 import com.dfwr.zhuanke.zhuanke.mvp.presenter.HomeMePresent;
 import com.dfwr.zhuanke.zhuanke.mvp.view.activity.BusinessHezuoActivity;
-import com.dfwr.zhuanke.zhuanke.mvp.view.activity.LoginActivity;
 import com.dfwr.zhuanke.zhuanke.mvp.view.activity.MyProfitActivity;
 import com.dfwr.zhuanke.zhuanke.mvp.view.activity.MyStudentListActivity;
 import com.dfwr.zhuanke.zhuanke.mvp.view.activity.RankActivity;
@@ -110,8 +109,8 @@ public class MeFragment extends BaseTwoFragment<HomeMeView, HomeMePresent<HomeMe
         switch (view.getId()) {
             case R.id.ll_account: //点击账户余额，跳转到提现界面
 
-//                intent = new Intent(getActivity(), MyProfitActivity.class);
-                intent = new Intent(getActivity(), LoginActivity.class);
+                intent = new Intent(getActivity(), MyProfitActivity.class);
+//                intent = new Intent(getActivity(), LoginActivity.class);
                 intent.putExtra(Systems.go_activity_type, Systems.activity_type_withdraw);
                 startActivity(intent);
                 break;
@@ -154,7 +153,7 @@ public class MeFragment extends BaseTwoFragment<HomeMeView, HomeMePresent<HomeMe
         tvTodayProfit.setText(userBaseInfo.getTodayProfit() + "");
         tvTodayPupil.setText(userBaseInfo.getTodayStudentNum() + "");
         tvAllProfit.setText(userBaseInfo.getTodayProfit() + "");
-        tvAllWithdraw.setText(userBaseInfo.getAllWithDrawMoney() + "");
+//        tvAllWithdraw.setText(userBaseInfo.getAllWithDrawMoney() + "");
 
         SharedPreferencesUtil.putStringData(getActivity(), SharedPreferencesTool.balance, userBaseInfo.getAccount().getBalance() + "");
     }
@@ -241,12 +240,6 @@ public class MeFragment extends BaseTwoFragment<HomeMeView, HomeMePresent<HomeMe
 
 
 
-    /****************
-     * 发起添加群流程。群号：乐享转官方群(826248193) 的 key 为： qDmYFkk2XtU903xEk2vrPayicCb-lAeh
-     * 调用 joinQQGroup(qDmYFkk2XtU903xEk2vrPayicCb-lAeh) 即可发起手Q客户端申请加群 乐享转官方群(826248193)
-     * @param
-     * @return 返回true表示呼起手Q成功，返回fals表示呼起失败
-     ******************/
     public boolean joinQQGroup() {
         String key = "jPgBTG3gAQVQklkf9xEWSxpkIaO9hcDt";
         Intent intent = new Intent();
