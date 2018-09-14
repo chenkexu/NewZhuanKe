@@ -17,6 +17,8 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.dfwr.zhuanke.zhuanke.R;
 import com.dfwr.zhuanke.zhuanke.base.BaseActivity;
 import com.dfwr.zhuanke.zhuanke.bean.CheckWithDrawBean;
+import com.dfwr.zhuanke.zhuanke.bean.Propertie;
+import com.dfwr.zhuanke.zhuanke.bean.UserBaseInfo;
 import com.dfwr.zhuanke.zhuanke.mvp.contract.MeWithDrawView;
 import com.dfwr.zhuanke.zhuanke.mvp.event.ChooseFragmentEvent;
 import com.dfwr.zhuanke.zhuanke.mvp.presenter.MeWithDrawPresent;
@@ -70,6 +72,7 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
     private RelativeLayout rl_title;
     private boolean flag;
     private double doubleBalance;
+    private String get_balance_money_min;
 
 
     @Override
@@ -77,8 +80,15 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_go_withdraw);
         ButterKnife.bind(this);
-        money = secletMoney[0];
 
+
+        balance = SharedPreferencesUtil.getStringData(this, SharedPreferencesTool.balance);
+        tvMyAccount.setText(balance);
+
+        //获取各个单价
+        mPresent.getProperties();
+
+        money = secletMoney[0];
         initView();
         initData();
         doubleBalance = Double.parseDouble(balance);
@@ -88,6 +98,15 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
             tvSubmit.setBackgroundResource(R.drawable.round_border_gray);
         }
     }
+
+
+    @Override
+    public void getProperties(Propertie result) {
+        get_balance_money_min = result.getGet_balance_money_min();
+        accountSelects[0] = get_balance_money_min+"元(仅限首次)";
+        secletMoney[0] = Double.parseDouble(get_balance_money_min);
+    }
+
 
 
     private void initView() {
@@ -128,10 +147,9 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
 
     private void initData() {
 
-        balance = SharedPreferencesUtil.getStringData(this, SharedPreferencesTool.balance);
-        tvMyAccount.setText(balance);
-        Intent intent = getIntent();
 
+
+        Intent intent = getIntent();
         if (intent!=null) {  //支付宝提现
             type = intent.getStringExtra(Systems.withDrawType);
             if (type.equals(Systems.alipay)) { //支付宝提现
@@ -216,8 +234,6 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
 
 
 
-
-
     public class Adapter extends BaseQuickAdapter<String, BaseViewHolder> {
         public Adapter(@Nullable List<String> data) {
             super(R.layout.item_account_select, data);
@@ -276,4 +292,11 @@ public class GoWithDrawActivity extends BaseActivity<MeWithDrawView,MeWithDrawPr
     public void hideLoading() {
         hideDefaultLoading();
     }
+
+    @Override
+    public void getUserInfo(UserBaseInfo userBaseInfo) {
+
+    }
+
+
 }

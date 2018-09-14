@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.TextView;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.dfwr.zhuanke.zhuanke.R;
@@ -27,6 +28,8 @@ public class AttentionWechatNumberActivity extends BaseActivity {
 
     @BindView(R.id.my_title)
     MyTitle myTitle;
+    @BindView(R.id.tv_wechat_replay)
+    TextView tvWechatReplay;
 
 
     @Override
@@ -36,6 +39,7 @@ public class AttentionWechatNumberActivity extends BaseActivity {
         ButterKnife.bind(this);
         myTitle.setTitleName("关注微信公众号");
         myTitle.setImageBack(this);
+        tvWechatReplay.setText("在公众号内发送”恭喜发财“,收到“绑定成功”即可。");
     }
 
 
@@ -61,7 +65,6 @@ public class AttentionWechatNumberActivity extends BaseActivity {
                 break;
         }
     }
-
 
 
     public boolean joinQQGroup() {

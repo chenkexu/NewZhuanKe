@@ -23,6 +23,7 @@ import com.dfwr.zhuanke.zhuanke.mvp.contract.HomeMeView;
 import com.dfwr.zhuanke.zhuanke.mvp.event.ChooseFragmentEvent;
 import com.dfwr.zhuanke.zhuanke.mvp.presenter.HomeMePresent;
 import com.dfwr.zhuanke.zhuanke.mvp.view.activity.BusinessHezuoActivity;
+import com.dfwr.zhuanke.zhuanke.mvp.view.activity.LoginActivity;
 import com.dfwr.zhuanke.zhuanke.mvp.view.activity.MyProfitActivity;
 import com.dfwr.zhuanke.zhuanke.mvp.view.activity.MyStudentListActivity;
 import com.dfwr.zhuanke.zhuanke.mvp.view.activity.RankActivity;
@@ -109,8 +110,8 @@ public class MeFragment extends BaseTwoFragment<HomeMeView, HomeMePresent<HomeMe
         switch (view.getId()) {
             case R.id.ll_account: //点击账户余额，跳转到提现界面
 
-                intent = new Intent(getActivity(), MyProfitActivity.class);
-//                intent = new Intent(getActivity(), LoginActivity.class);
+//                intent = new Intent(getActivity(), MyProfitActivity.class);
+                intent = new Intent(getActivity(), LoginActivity.class);
                 intent.putExtra(Systems.go_activity_type, Systems.activity_type_withdraw);
                 startActivity(intent);
                 break;

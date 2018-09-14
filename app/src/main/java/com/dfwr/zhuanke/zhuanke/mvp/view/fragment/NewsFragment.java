@@ -154,6 +154,7 @@ public class NewsFragment extends BaseTwoFragment<NewsView, NewsPresent<NewsView
 
 
     private void initViewPagerAndTabLayout(Propertie propertie) {
+
         tv_price.setText("分享并阅读文章 可获得"+propertie.getShare_price() +"元/篇奖励哦");
 //        Bundle arguments = getArguments();
 //        Propertie propertie = (Propertie) arguments.getSerializable(Systems.propertie);

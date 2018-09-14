@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import com.dfwr.zhuanke.zhuanke.R;
 import com.dfwr.zhuanke.zhuanke.util.ShareUtil;
+import com.dfwr.zhuanke.zhuanke.widget.Systems;
 
 import java.util.HashMap;
 
@@ -85,8 +86,8 @@ public class ShareDialog extends Dialog {
 
     @OnClick({R.id.iv_close, R.id.iv_wechat, R.id.iv_wechat_circle, R.id.iv_qq, R.id.iv_qq_zone})
     public void onViewClicked(View view) {
-        hashMap.put("AppId","1107755097");
-        hashMap.put("AppKey","KsIWMs9Q286L0PIy");
+        hashMap.put("AppId", Systems.qq_App_id);
+        hashMap.put("AppKey",Systems.qq_App_secret);
         hashMap.put("BypassApproval","false");
         hashMap.put("ShareByAppClient","true");
 

@@ -182,10 +182,23 @@ public class NewsListFragment extends BaseLazyFragment<NewsListView, NewsListPre
     public void getArticleListSuccess(List<Article> projectListData) {
         setRefreshing(false);
         Logger.d("getArticleListSuccess ");
+
         if (projectListData == null || projectListData.size() == 0) {
             newsAdapter.setNewData(null);
             newsAdapter.setEmptyView(R.layout.layout_no_content, (ViewGroup) recyclerView.getParent());
-        }else{
+        }else{ //有数据
+
+//            if (type.equals("推荐")) {
+//                Article article = new Article();
+//                article.setAid(5278);
+//                article.setClick(10);
+//                article.setHeadImg("http://p3.pstatp.com/large/pgc-image/1536459177416889923977e");
+//                article.setTitle("信息发错群且无法撤回，有多尴尬？网友：工作危危可及啊");
+//                projectListData.add(0,article);
+//            }else{
+//
+//            }
+
             mData = projectListData;
             setData(true, mData);
             newsAdapter.setEnableLoadMore(true);

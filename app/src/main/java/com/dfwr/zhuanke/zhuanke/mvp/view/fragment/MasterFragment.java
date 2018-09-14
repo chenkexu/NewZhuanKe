@@ -293,6 +293,7 @@ public class MasterFragment extends BaseTwoFragment<IHomeView,HomePresent<IHomeV
                         if (t!=null) {
                             Propertie result = t.getResult();
                             propertie = result;
+
                             initPrice(result);
                         }
                     }
@@ -332,6 +333,9 @@ public class MasterFragment extends BaseTwoFragment<IHomeView,HomePresent<IHomeV
             String percentStr2 = propertie.getGrandson_reward();
             String string = getResources().getString(R.string.master_profit_tips, percentStr,percentStr2);
             tvMasterTipsStr.setText(Html.fromHtml(string));
+
+
+
         }
     }
 

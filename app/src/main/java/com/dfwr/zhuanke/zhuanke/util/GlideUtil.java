@@ -113,13 +113,6 @@ public class GlideUtil {
         }
     }
 
-
-
-
-
-
-
-
     /**
      * 加载广告图片
      * @param context

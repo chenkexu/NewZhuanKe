@@ -51,6 +51,9 @@ public class SharedPreferencesTool {
     public static final String current_date ="current_date";//支付宝提现用户名
 
 
+    public static final String get_balance_money_min ="get_balance_money_min";//支付宝提现用户名
+
+
 
 
 

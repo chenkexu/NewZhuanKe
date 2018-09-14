@@ -26,10 +26,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 tl:tl_tab_padding="7dp"
+                tl:tl_textsize="22sp"
                 tl:tl_indicator_color="@color/bg_white"
                 tl:tl_underline_color="@color/bg_white"
                 tl:tl_textSelectColor="@color/bg_white"
-                tl:tl_textUnselectColor="@color/gray"
+                tl:tl_textUnselectColor="@color/black"
                 tl:tl_indicator_corner_radius="1.5dp"
                 tl:tl_indicator_margin_left="5dp"
                 tl:tl_indicator_margin_right="5dp"
@@ -56,6 +57,7 @@
 
 
     <com.hanks.htextview.rainbow.RainbowTextView
+        android:textSize="17sp"
         tl:colorSpace="150dp"
         tl:colorSpeed="4dp"
         android:id="@+id/tv_price"

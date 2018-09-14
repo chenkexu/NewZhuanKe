@@ -10,6 +10,8 @@ import com.dfwr.zhuanke.zhuanke.api.param.ParamsUtil;
 import com.dfwr.zhuanke.zhuanke.api.response.ApiResponse;
 import com.dfwr.zhuanke.zhuanke.base.BasePresenter;
 import com.dfwr.zhuanke.zhuanke.bean.CheckWithDrawBean;
+import com.dfwr.zhuanke.zhuanke.bean.Propertie;
+import com.dfwr.zhuanke.zhuanke.bean.UserBaseInfo;
 import com.dfwr.zhuanke.zhuanke.mvp.contract.MeWithDrawView;
 import com.dfwr.zhuanke.zhuanke.mvp.event.UpdateSmsStateEvent;
 import com.dfwr.zhuanke.zhuanke.util.RxUtil;
@@ -38,8 +40,52 @@ public class MeWithDrawPresent<T> extends BasePresenter<MeWithDrawView> {
     }
 
 
+    public void getProperties() {
+        HashMap<String, Object> map = ParamsUtil.getMap();
+        ApiManager.getInstence().getApiService().getProperties(ParamsUtil.getParams(map))
+                .compose(RxUtil.<ApiResponse<Propertie>>rxSchedulerHelper())
+                .subscribe(new BaseObserver<Propertie>() {
+                    @Override
+                    protected void onSuccees(ApiResponse<Propertie> t) {
+                        if (t != null) {
+                            Propertie result = t.getResult();
+                            rankView.getProperties(result);
+                        }
+                    }
+
+                    @Override
+                    protected void onFailure(String errorInfo, boolean isNetWorkError) {
+                        ToastUtils.showShort(errorInfo);
+                    }
+                });
+    }
 
 
+
+
+    public void getUserInfo(){
+        rankView.showLoading();
+        HashMap<String, Object> map = ParamsUtil.getMap();
+        ApiManager.getInstence().getApiService().getUserInfo(ParamsUtil.getParams(map))
+                .compose(RxUtil.<ApiResponse<UserBaseInfo>>rxSchedulerHelper())
+                .subscribe(new BaseObserver<UserBaseInfo>() {
+                    @Override
+                    protected void onSuccees(ApiResponse<UserBaseInfo> t) {
+                        rankView.hideLoading();
+                        if (t!=null) {
+                            rankView.getUserInfo(t.getResult());
+
+                        }
+                    }
+
+                    @Override
+                    protected void onFailure(String errorInfo, boolean isNetWorkError) {
+                        rankView.hideLoading();
+                        ToastUtils.showShort(errorInfo);
+                    }
+                });
+
+    }
 
 
 
@@ -186,6 +232,13 @@ public class MeWithDrawPresent<T> extends BasePresenter<MeWithDrawView> {
         };
         timer.start();
     }
+
+
+
+
+
+
+
 
 
 

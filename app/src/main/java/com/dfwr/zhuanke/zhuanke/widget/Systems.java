@@ -9,6 +9,45 @@ import java.io.File;
  */
 
 public final class Systems {
+
+
+    //mob平台
+    public static final String mob_Appkey = "1ea90b79ee1c3";
+    public static final String mob_App_Secret = "3ad9421238237570c51625a436d4b85e";
+
+
+    //微信登录
+    public static final String wechat_App_id = "wx055b79a81a71b0cb";
+    public static final String wechat_App_secret = "16bbef65347c71433ace880c00790b87";
+
+
+    //QQ登录和分享
+    public static final String qq_App_id = "1107755097";
+    public static final String qq_App_secret = "KsIWMs9Q286L0PIy";
+
+
+    //徒弟包名
+    public static final String app_student_name = "zhuanyueba_";
+
+    //bugly
+    public static final String bugly_id = "5a730662f0";
+
+
+
+
+
+
+
+
+//    public static final String VERSION = "7.2.2";
+
+
+
+
+
+
+
+
     public static final String VERSION = "7.2.2";
 
     public static final String UTF_8 = "utf-8";

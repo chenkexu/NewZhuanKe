@@ -99,6 +99,13 @@ public class MainActivity extends BaseActivity<IMsgView, MsgPresent<IMsgView>> i
     private Propertie propertie;
 
 
+
+
+
+
+
+
+
     /**
      * 更新APP版本
      * @param
@@ -372,6 +379,8 @@ public class MainActivity extends BaseActivity<IMsgView, MsgPresent<IMsgView>> i
     }
 
 
+
+
     public void selectedFragment(int position) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         hideFragment(transaction);
@@ -415,14 +424,28 @@ public class MainActivity extends BaseActivity<IMsgView, MsgPresent<IMsgView>> i
     }
 
     private void hideFragment(FragmentTransaction transaction) {
-        if (newsFragment != null)
+//        if (newsFragment != null)
+//            transaction.hide(newsFragment);
+//        if (masterFragment != null)
+//            transaction.hide(masterFragment);
+//        if (withDrawFragment != null)
+//            transaction.hide(withDrawFragment);
+//        if (meFragment != null)
+//            transaction.hide(meFragment);
+
+
+        if (newsFragment != null && !newsFragment.isHidden()) {
             transaction.hide(newsFragment);
-        if (masterFragment != null)
+        }
+        if (masterFragment != null && !masterFragment.isHidden()) {
             transaction.hide(masterFragment);
-        if (withDrawFragment != null)
+        }
+        if (withDrawFragment != null && !withDrawFragment.isHidden()) {
             transaction.hide(withDrawFragment);
-        if (meFragment != null)
+        }
+        if (meFragment != null && !meFragment.isHidden()) {
             transaction.hide(meFragment);
+        }
     }
 
     public void tabSelected(LinearLayout linearLayout) {

@@ -29,11 +29,14 @@ public class NewsAdapter extends BaseQuickAdapter<Article, BaseViewHolder> {
     }
 
     public NewsAdapter(@Nullable List<Article> data) {
+
         super(R.layout.item_news_list, data);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, Article item) {
+
+
         if (!TextUtils.isEmpty(item.getHeadImg())) {
             GlideUtil.getInstance().loadAdImage(mContext, (ImageView) helper.getView(R.id.item_project_list_iv), item.getHeadImg()
                     , true);

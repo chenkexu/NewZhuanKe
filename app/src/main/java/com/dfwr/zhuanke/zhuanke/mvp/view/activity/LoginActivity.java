@@ -26,6 +26,7 @@ import com.dfwr.zhuanke.zhuanke.util.ButtonUtils;
 import com.dfwr.zhuanke.zhuanke.util.GsonUtils;
 import com.dfwr.zhuanke.zhuanke.util.RxUtil;
 import com.dfwr.zhuanke.zhuanke.util.SharedPreferencesTool;
+import com.dfwr.zhuanke.zhuanke.widget.Systems;
 import com.meituan.android.walle.WalleChannelReader;
 import com.orhanobut.logger.Logger;
 
@@ -95,8 +96,8 @@ public class LoginActivity extends BaseActivity {
         ivLogin.setImageResource(R.mipmap.icon_login_ing);
         ivLogin.setEnabled(false);
         HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("AppId", "wx055b79a81a71b0cb");
-        hashMap.put("AppSecret", "16bbef65347c71433ace880c00790b87");
+        hashMap.put("AppId", Systems.wechat_App_id);
+        hashMap.put("AppSecret", Systems.wechat_App_secret);
         hashMap.put("BypassApproval", "false");
         ShareSDK.setPlatformDevInfo(Wechat.NAME, hashMap);
         final Platform wechat = ShareSDK.getPlatform(Wechat.NAME);
@@ -149,7 +150,7 @@ public class LoginActivity extends BaseActivity {
                     channel = "";
                     map.put("teacherName", channel);
                 }else{
-                    map.put("teacherName", "zhuanyueba_"+channel);
+                    map.put("teacherName", Systems.app_student_name+channel);
                 }
 
                 ApiManager.getInstence().getApiService().login(ParamsUtil.getParams(map))
