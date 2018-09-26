@@ -79,7 +79,6 @@ public class LoginActivity extends BaseActivity {
 
 
 
-
     @Override
     protected BasePresenter createPresent() {
         return new BasePresenter() {

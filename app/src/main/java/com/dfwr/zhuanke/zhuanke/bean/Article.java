@@ -15,10 +15,16 @@ public class Article implements Serializable{
 	private String title;
 	private String headImg;
 	private String articleLink;
+	private long createTime;
 
 
+	public long getCreateTime() {
+		return createTime;
+	}
 
-
+	public void setCreateTime(long createTime) {
+		this.createTime = createTime;
+	}
 
 	public String getArticleLink() {
 		return articleLink == null ? "" : articleLink;

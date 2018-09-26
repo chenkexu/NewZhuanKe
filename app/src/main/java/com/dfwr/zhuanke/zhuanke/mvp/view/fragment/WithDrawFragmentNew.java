@@ -71,7 +71,7 @@ public class WithDrawFragmentNew extends BaseTwoFragment<HomeWithDrawView, HomeW
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         refreshLayout.setOnRefreshListener(this);//刷新
         newsAdapter = new WithDrawHistoryAdapter(mData);
-        newsAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
+        newsAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         newsAdapter.setOnLoadMoreListener(this, recyclerView);
         recyclerView.setAdapter(newsAdapter);
         setData();

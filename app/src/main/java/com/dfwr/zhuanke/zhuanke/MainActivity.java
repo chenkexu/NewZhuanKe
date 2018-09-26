@@ -3,7 +3,10 @@ package com.dfwr.zhuanke.zhuanke;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.blankj.utilcode.util.AppUtils;
@@ -90,6 +93,9 @@ public class MainActivity extends BaseActivity<IMsgView, MsgPresent<IMsgView>> i
     @BindView(R.id.ll_mine)
     LinearLayout llMine;
 
+    @BindView(R.id.red_package)
+    ImageView red_package;
+
 
     private NewsFragment newsFragment;
     private MasterFragment masterFragment;
@@ -99,6 +105,10 @@ public class MainActivity extends BaseActivity<IMsgView, MsgPresent<IMsgView>> i
     private Propertie propertie;
 
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        //super.onSaveInstanceState(outState);    //将这一行注释掉，阻止activity保存fragment的状态,解决Fragment穿透重叠现象
+    }
 
 
 
@@ -175,7 +185,7 @@ public class MainActivity extends BaseActivity<IMsgView, MsgPresent<IMsgView>> i
                                     .setUpdateLog("版本更新："+updateBean.getResult().getDesc())
                                     //大小，不设置不显示大小，可以不设置
                                     .setTargetSize(updateBean.getResult().getPackageSize()+"M");
-                                    //是否强制更新，可以不设置
+                            //是否强制更新，可以不设置
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -240,6 +250,10 @@ public class MainActivity extends BaseActivity<IMsgView, MsgPresent<IMsgView>> i
                 SharedPreferencesUtil.removeData(this,SharedPreferencesUtil.MESSAGE_ALREADY_LOOKED);
             }
         }
+//        Animation mAnimation = AnimationUtils.loadAnimation(this, R.anim.anim_zoom);
+//        red_package.setAnimation(mAnimation );
+//        mAnimation.start();
+
     }
 
 
@@ -263,7 +277,7 @@ public class MainActivity extends BaseActivity<IMsgView, MsgPresent<IMsgView>> i
 
 
 
-    
+
 
 
     //获取公告
@@ -275,10 +289,10 @@ public class MainActivity extends BaseActivity<IMsgView, MsgPresent<IMsgView>> i
                     @Override
                     protected void onSuccees(ApiResponse<BannerBean> t) {
                         // TODO: 2018/8/24 接收后台提供的链接
-//                        if (t.getResult().getVal()!=null && (!t.getResult().getVal().equals(""))) {
-//                        }
-                        AdvertisementDialog advertisementDialog = new AdvertisementDialog(MainActivity.this,"http://pic.caigoubao.cc/606592/ad2.png");
-                        advertisementDialog.showDialog();
+                        if (t.getResult().getVal()!=null && (!t.getResult().getVal().equals(""))) {
+                            AdvertisementDialog advertisementDialog = new AdvertisementDialog(MainActivity.this,t.getResult().getVal());
+                            advertisementDialog.showDialog();
+                        }
                     }
                     @Override
                     protected void onFailure(String errorInfo, boolean isNetWorkError) {

@@ -23,7 +23,6 @@ import com.dfwr.zhuanke.zhuanke.mvp.contract.HomeMeView;
 import com.dfwr.zhuanke.zhuanke.mvp.event.ChooseFragmentEvent;
 import com.dfwr.zhuanke.zhuanke.mvp.presenter.HomeMePresent;
 import com.dfwr.zhuanke.zhuanke.mvp.view.activity.BusinessHezuoActivity;
-import com.dfwr.zhuanke.zhuanke.mvp.view.activity.LoginActivity;
 import com.dfwr.zhuanke.zhuanke.mvp.view.activity.MyProfitActivity;
 import com.dfwr.zhuanke.zhuanke.mvp.view.activity.MyStudentListActivity;
 import com.dfwr.zhuanke.zhuanke.mvp.view.activity.RankActivity;
@@ -31,11 +30,13 @@ import com.dfwr.zhuanke.zhuanke.util.GlideUtil;
 import com.dfwr.zhuanke.zhuanke.util.SharedPreferencesTool;
 import com.dfwr.zhuanke.zhuanke.util.SharedPreferencesUtil;
 import com.dfwr.zhuanke.zhuanke.util.UserDataManeger;
+import com.dfwr.zhuanke.zhuanke.widget.MarqueeView;
 import com.dfwr.zhuanke.zhuanke.widget.Systems;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -78,9 +79,15 @@ public class MeFragment extends BaseTwoFragment<HomeMeView, HomeMePresent<HomeMe
     TextView tvAllProfit;
     @BindView(R.id.tv_all_withdraw)
     TextView tvAllWithdraw;
+
+    @BindView(R.id.marqueeView)
+    MarqueeView marqueeView;
+
     @BindView(R.id.ll_today_all_student)
     LinearLayout llTodayAllStudent;
     Unbinder unbinder;
+
+
 
 
     private List<HomeBean> imagesAndTitles = new ArrayList<>();
@@ -109,9 +116,8 @@ public class MeFragment extends BaseTwoFragment<HomeMeView, HomeMePresent<HomeMe
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_account: //点击账户余额，跳转到提现界面
-
-//                intent = new Intent(getActivity(), MyProfitActivity.class);
-                intent = new Intent(getActivity(), LoginActivity.class);
+                intent = new Intent(getActivity(), MyProfitActivity.class);
+//                intent = new Intent(getActivity(), LoginActivity.class);
                 intent.putExtra(Systems.go_activity_type, Systems.activity_type_withdraw);
                 startActivity(intent);
                 break;
@@ -155,7 +161,6 @@ public class MeFragment extends BaseTwoFragment<HomeMeView, HomeMePresent<HomeMe
         tvTodayPupil.setText(userBaseInfo.getTodayStudentNum() + "");
         tvAllProfit.setText(userBaseInfo.getTodayProfit() + "");
 //        tvAllWithdraw.setText(userBaseInfo.getAllWithDrawMoney() + "");
-
         SharedPreferencesUtil.putStringData(getActivity(), SharedPreferencesTool.balance, userBaseInfo.getAccount().getBalance() + "");
     }
 
@@ -169,7 +174,12 @@ public class MeFragment extends BaseTwoFragment<HomeMeView, HomeMePresent<HomeMe
     @Override
     protected void initView() {
         super.initView();
+        String[] marqueeViews = getResources().getStringArray(R.array.my_marqueeView);
+        List<String> info = Arrays.asList(marqueeViews);
+        marqueeView.startWithList(info);
 
+   // 在代码里设置自己的动画
+        marqueeView.startWithList(info, R.anim.anim_bottom_in, R.anim.anim_top_out);
         UserBean userBean = UserDataManeger.getInstance().getUserBean();
 
         if (userBean != null) {
@@ -289,6 +299,16 @@ public class MeFragment extends BaseTwoFragment<HomeMeView, HomeMePresent<HomeMe
         @Override
         public Fragment getItem(int position) {
             return mFragments.get(position);
+        }
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden){
+            marqueeView.stopFlipping();
+        }else{
+            marqueeView.startFlipping();
         }
     }
 

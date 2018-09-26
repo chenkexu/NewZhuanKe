@@ -57,22 +57,23 @@
 
 
     <com.hanks.htextview.rainbow.RainbowTextView
+        android:visibility="gone"
         android:textSize="17sp"
         tl:colorSpace="150dp"
         tl:colorSpeed="4dp"
         android:id="@+id/tv_price"
         android:textStyle="bold"
         android:textColor="@color/bg_red"
-        android:layout_centerHorizontal="true"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:gravity="center"
-        android:layout_below="@id/ll_title"
         android:text="分享并阅读文章 可获得 0.15元/篇奖励"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_title"
+        android:layout_centerHorizontal="true" />
 
 
     <com.dfwr.zhuanke.zhuanke.widget.CustomViewPager

@@ -38,7 +38,7 @@
 
     <ImageView
         android:layout_marginTop="20dp"
-        android:src="@mipmap/img_withdraw_list"
+        android:src="@mipmap/icon_money"
         android:layout_width="50dp"
         android:layout_height="50dp" />
 

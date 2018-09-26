@@ -18,7 +18,22 @@ public class DateTool {
 
     public static final String DEFAULT_DATA="1970-01-01";
 
-
+    /**
+     * 将字符串转为时间戳
+     * @param dateString
+     * @param pattern
+     * @return
+     */
+    public static long getStringToDate(String dateString, String pattern) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+        Date date = new Date();
+        try{
+            date = dateFormat.parse(dateString);
+        } catch(ParseException e) {
+            e.printStackTrace();
+        }
+        return date.getTime();
+    }
 
     public static boolean isSameDate(Date date1, Date date2) {
         Calendar cal1 = Calendar.getInstance();

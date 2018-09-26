@@ -51,7 +51,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"
-            android:screenOrientation="portrait">
+            >
         </activity>
 
         <activity android:name=".mvp.view.activity.GuideActivity"  android:screenOrientation="portrait">
@@ -93,7 +93,7 @@
         <!-- 适配7.0 -->
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="cn.orientdata.zhuanke.fileProvider"
+            android:authorities="cn.orientdata.chaoyuehui.fileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

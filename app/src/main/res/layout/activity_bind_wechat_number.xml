@@ -77,7 +77,7 @@
                     android:drawableLeft="@mipmap/dui"
                     android:drawablePadding="5dp"
                     android:gravity="center_vertical"
-                    android:text="在公众号内发送”恭喜发财“,收到“绑定成功”即可。" />
+                    android:text="在公众号内发送”潮阅汇“,收到“绑定成功”即可。" />
 
 
             </LinearLayout>

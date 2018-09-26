@@ -72,64 +72,6 @@
                 </LinearLayout>
 
                 <android.support.v7.widget.CardView
-
-                    style="@style/order_cardView_style">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:background="@color/bg_white"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <TextView
-                            style="@style/text_down"
-                            android:text="成为推广大使" />
-                        <include layout="@layout/line_gray"/>
-
-
-                        <TextView
-                            android:drawablePadding="5dp"
-                            android:gravity="center_vertical"
-                            android:drawableLeft="@mipmap/dui"
-                            android:layout_marginTop="5dp"
-                            android:text="凡在活动期间注册的用户即可成为平台的推广大使"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:drawablePadding="5dp"
-                            android:gravity="center_vertical"
-                            android:drawableLeft="@mipmap/dui"
-                            android:layout_marginTop="5dp"
-                            android:text="在活动期间邀请好友成为徒弟并下载登录，即可获得现金奖励"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:id="@+id/tv_master_reward"
-                            android:layout_marginTop="5dp"
-                            android:drawablePadding="5dp"
-                            android:gravity="center_vertical"
-                            android:drawableLeft="@mipmap/dui"
-                            android:text="徒弟收益达到2元奖励推广大使1元。徒弟首次提现成功奖励推广大使3元"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:layout_marginTop="5dp"
-                            android:drawablePadding="5dp"
-                            android:gravity="center_vertical"
-                            android:drawableLeft="@mipmap/dui"
-                            android:id="@+id/tv_master_tips"
-                            android:text="同时享受徒弟30%+徒孙10%提成奖励"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:layout_marginTop="10dp"
                     style="@style/order_cardView_style">
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -196,43 +138,105 @@
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
+
+
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_marginTop="10dp"
+                    style="@style/order_cardView_style">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/bg_white"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            style="@style/text_down"
+                            android:text="收徒方式"
+                            android:textStyle="bold" />
+                        <include layout="@layout/line_gray"/>
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:padding="5dp" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text=""
+                            android:textColor="@color/black"/>
+
+                    </LinearLayout>
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="20dp"
                     style="@style/order_cardView_style">
 
-                  <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:background="@color/bg_white"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                      <TextView
-                          style="@style/text_down"
-                          android:text="收徒方式"
-                          android:textStyle="bold" />
-                      <include layout="@layout/line_gray"/>
-
-                      <android.support.v7.widget.RecyclerView
-                          android:id="@+id/recyclerView"
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_marginTop="5dp"
-                          android:padding="5dp" />
-
-                      <TextView
-                        android:visibility="gone"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text=""
-                        android:textColor="@color/black"/>
+                        android:background="@color/bg_white"
+                        android:orientation="vertical"
+                        android:padding="5dp">
 
-                  </LinearLayout>
+                        <TextView
+                            style="@style/text_down"
+                            android:text="成为推广大使" />
+                        <include layout="@layout/line_gray"/>
+
+
+                        <TextView
+                            android:drawablePadding="5dp"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@mipmap/dui"
+                            android:layout_marginTop="5dp"
+                            android:text="凡在活动期间注册的用户即可成为平台的推广大使"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:drawablePadding="5dp"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@mipmap/dui"
+                            android:layout_marginTop="5dp"
+                            android:text="在活动期间邀请好友成为徒弟并下载登录，即可获得现金奖励"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/tv_master_reward"
+                            android:layout_marginTop="5dp"
+                            android:drawablePadding="5dp"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@mipmap/dui"
+                            android:text="徒弟收益达到2元奖励推广大使1元。徒弟首次提现成功奖励推广大使3元"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:drawablePadding="5dp"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@mipmap/dui"
+                            android:id="@+id/tv_master_tips"
+                            android:text="同时享受徒弟30%+徒孙10%提成奖励"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
                 </android.support.v7.widget.CardView>
+
+
+
+
+
 
                 <android.support.v7.widget.CardView
                     android:visibility="gone"

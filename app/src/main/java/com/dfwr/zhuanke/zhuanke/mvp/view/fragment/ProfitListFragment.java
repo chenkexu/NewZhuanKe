@@ -12,7 +12,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dfwr.zhuanke.zhuanke.R;
 import com.dfwr.zhuanke.zhuanke.adapter.ProfitAdapter;
 import com.dfwr.zhuanke.zhuanke.base.BaseLazyFragment;
-import com.dfwr.zhuanke.zhuanke.base.LazyLoadFragment;
 import com.dfwr.zhuanke.zhuanke.bean.MyProfit;
 import com.dfwr.zhuanke.zhuanke.mvp.contract.ProfitView;
 import com.dfwr.zhuanke.zhuanke.mvp.presenter.ProfitPresent;
@@ -39,7 +38,6 @@ public class ProfitListFragment extends BaseLazyFragment<ProfitView, ProfitPrese
     private List<Integer> channelIds = new ArrayList<>();
 
     //    private int currentPage;
-    private ArrayList<LazyLoadFragment> mFragments = new ArrayList<>();
 
 
     ProfitAdapter newsAdapter;
@@ -124,7 +122,7 @@ public class ProfitListFragment extends BaseLazyFragment<ProfitView, ProfitPrese
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         refreshLayout.setOnRefreshListener(this);//刷新
         newsAdapter = new ProfitAdapter(mData,type);
-        newsAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
+        newsAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         newsAdapter.setOnLoadMoreListener(this, recyclerView);
         recyclerView.setAdapter(newsAdapter);
     }

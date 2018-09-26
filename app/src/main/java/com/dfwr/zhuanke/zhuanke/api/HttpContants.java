@@ -8,10 +8,12 @@ public class HttpContants {
 
 
     //正式环境
-    public static final String HOST_URL = "http://210.209.93.211:18001/";
+//    public static final String HOST_URL = "http://210.209.93.211:18001/";
 
 
 //    public static final String HOST_URL = "http://192.168.2.85:18001/";
+
+    public static final String HOST_URL = "http://210.209.72.26:18001/";
 
 
     //文涛的地址

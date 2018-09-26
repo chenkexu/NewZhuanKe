@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -86,88 +87,38 @@
         <android.support.v7.widget.CardView
             style="@style/order_cardView_style"
             android:layout_marginTop="-40dp">
+            <android.support.v7.widget.RecyclerView
+                android:padding="10dp"
+                android:layout_centerInParent="true"
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </android.support.v7.widget.CardView>
+
+        <com.dfwr.zhuanke.zhuanke.widget.MarqueeView
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:id="@+id/marqueeView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            app:mvAnimDuration="1000"
+            app:mvDirection="bottom_to_top"
+            app:mvInterval="1500"
+            app:mvGravity="center"
+            app:mvTextColor="@color/red"
+            app:mvTextSize="14sp"
+            app:mvSingleLine="true"/>
+
+        <android.support.v7.widget.CardView
+            style="@style/order_cardView_style"
+            android:layout_marginTop="10dp">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <LinearLayout
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:background="@color/bg_white"
-                    android:layout_marginBottom="5dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp">
-
-                    <LinearLayout
-                        android:id="@+id/ll_account"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="账户余额(元)"
-                            android:textColor="@color/black" />
-
-                        <TextView
-                            android:id="@+id/tv_account"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0"
-                            android:textColor="@color/bg_red"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <include layout="@layout/line_gray_vertical"/>
-                    <LinearLayout
-                        android:id="@+id/ll_today_profit"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:layout_marginTop="5dp"
-                            android:textColor="@color/black"
-                            android:text="今日收益(元)"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:id="@+id/tv_today_profit"
-                            android:textColor="@color/bg_red"
-                            android:textStyle="bold"
-                            android:text="0"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:visibility="gone"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:layout_marginTop="5dp"
-                            android:textColor="@color/black"
-                            android:text="今日收徒(人)"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:textColor="@color/bg_red"
-                            android:textStyle="bold"
-                            android:text="0"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                </LinearLayout>
-                <include layout="@layout/line_gray"/>
                 <LinearLayout
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
@@ -209,18 +160,19 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent">
                         <TextView
-                            android:layout_marginTop="5dp"
-                            android:textColor="@color/black"
-                            android:text="今日收徒(人)"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <TextView
                             android:id="@+id/tv_today_pupil"
                             android:textColor="@color/bg_red"
                             android:textStyle="bold"
                             android:text="0"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:textColor="@color/black"
+                            android:text="今日收徒(人)"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
                     </LinearLayout>
                     <LinearLayout
                         android:visibility="gone"
@@ -252,36 +204,102 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent">
                         <TextView
+                            android:id="@+id/tv_all_pupil"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/bg_red"
+                            android:textStyle="bold" />
+                        <TextView
                             android:layout_marginTop="5dp"
                             android:textColor="@color/black"
                             android:text="累计收徒(人)"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <include layout="@layout/line_gray"/>
+                <LinearLayout
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:background="@color/bg_white"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp">
+
+                    <LinearLayout
+                        android:id="@+id/ll_account"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <TextView
-                            android:id="@+id/tv_all_pupil"
+                            android:id="@+id/tv_account"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/bg_red"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="账户余额(元)"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+                    <include layout="@layout/line_gray_vertical"/>
+                    <LinearLayout
+                        android:id="@+id/ll_today_profit"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:id="@+id/tv_today_profit"
+                            android:textColor="@color/bg_red"
+                            android:textStyle="bold"
+                            android:text="0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:textColor="@color/black"
+                            android:text="今日收益(元)"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:textColor="@color/black"
+                            android:text="今日收徒(人)"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
                             android:textColor="@color/bg_red"
                             android:textStyle="bold"
                             android:text="0"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
+
                 </LinearLayout>
             </LinearLayout>
-
-
-        </android.support.v7.widget.CardView>
-
-
-        <android.support.v7.widget.CardView
-            style="@style/order_cardView_style"
-            android:layout_marginTop="30dp">
-
-            <android.support.v7.widget.RecyclerView
-                android:padding="10dp"
-                android:layout_centerInParent="true"
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
         </android.support.v7.widget.CardView>
 
     </LinearLayout>

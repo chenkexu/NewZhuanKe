@@ -10,6 +10,8 @@ import com.dfwr.zhuanke.zhuanke.util.DateTool;
 
 import java.util.List;
 
+import static com.dfwr.zhuanke.zhuanke.util.UIUtils.getResources;
+
 
 /**
  * @author quchao
@@ -43,11 +45,13 @@ public class WithDrawHistoryAdapter extends BaseQuickAdapter<WithDrawHistory, Ba
             case 4:
                 helper.setText(R.id.tv_name, helper.getLayoutPosition()+1+".提现失败");
                 break;
-
+            case 8:
+                helper.setText(R.id.tv_name, helper.getLayoutPosition()+1+".已退还");
+                helper.setTextColor(R.id.tv_money, getResources().getColor(R.color.bg_red));
+                break;
         }
         String date = DateTool.stampToDate(item.getCreateDate());
         helper.setText(R.id.tv_date,date+"");
         helper.setText(R.id.tv_money, "+"+item.getMoney()+"元");
-
     }
 }

@@ -39,7 +39,8 @@ public class AttentionWechatNumberActivity extends BaseActivity {
         ButterKnife.bind(this);
         myTitle.setTitleName("关注微信公众号");
         myTitle.setImageBack(this);
-        tvWechatReplay.setText("在公众号内发送”恭喜发财“,收到“绑定成功”即可。");
+        String name = getResources().getString(R.string.app_name);
+        tvWechatReplay.setText("在公众号内发送" +name+ ",收到“绑定成功”即可。");
     }
 
 

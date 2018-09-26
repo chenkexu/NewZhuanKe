@@ -76,7 +76,7 @@ public class MyStudentListActivity extends BaseActivity<MyStudentView, MyStudent
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         refreshLayout.setOnRefreshListener(this);//刷新
         newsAdapter = new MystudentAdapter(mData);
-        newsAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
+        newsAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         newsAdapter.setOnLoadMoreListener(this, recyclerView);
         recyclerView.setAdapter(newsAdapter);
     }

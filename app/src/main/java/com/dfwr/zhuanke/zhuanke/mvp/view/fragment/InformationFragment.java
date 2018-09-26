@@ -10,6 +10,7 @@ import com.dfwr.zhuanke.zhuanke.bean.UserBaseInfo;
 import com.dfwr.zhuanke.zhuanke.bean.WithDrawHistory;
 import com.dfwr.zhuanke.zhuanke.mvp.contract.HomeWithDrawView;
 import com.dfwr.zhuanke.zhuanke.mvp.presenter.HomeWithDrawPresent;
+import com.dfwr.zhuanke.zhuanke.mvp.view.activity.BusinessHezuoActivity;
 import com.dfwr.zhuanke.zhuanke.mvp.view.activity.MyProfitActivity;
 import com.dfwr.zhuanke.zhuanke.mvp.view.activity.MyStudentListActivity;
 import com.dfwr.zhuanke.zhuanke.mvp.view.activity.RankActivity;
@@ -51,13 +52,12 @@ public class InformationFragment extends BaseTwoFragment<HomeWithDrawView, HomeW
 
     }
 
-    @OnClick({R.id.rv_balance_account, R.id.rl_my_commission, R.id.rl_commission_withdraw, R.id.rl_invoice, R.id.rl_service, R.id.rl_share})
+    @OnClick({R.id.rv_balance_account,R.id.rl_hezuo, R.id.rl_my_commission, R.id.rl_commission_withdraw, R.id.rl_invoice, R.id.rl_service, R.id.rl_share})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rv_balance_account: //文章收益记录
                 intent.setClass(getActivity(), MyProfitActivity.class);
                 intent.putExtra(Systems.my_profit_type, mTitles[0]);
-
                 intent.putExtra(Systems.go_activity_type, Systems.activity_type_profit);
                 break;
             case R.id.rl_my_commission: //收徒奖励记录
@@ -81,10 +81,14 @@ public class InformationFragment extends BaseTwoFragment<HomeWithDrawView, HomeW
             case R.id.rl_share: //排行榜
                 intent.setClass(getActivity(), RankActivity.class);
                 break;
+            case R.id.rl_hezuo: //商务合作
+                intent.setClass(getActivity(), BusinessHezuoActivity.class);
+                break;
 
         }
         startActivity(intent);
     }
+
 
 
 

@@ -12,27 +12,28 @@ public final class Systems {
 
 
     //mob平台
-    public static final String mob_Appkey = "1ea90b79ee1c3";
-    public static final String mob_App_Secret = "3ad9421238237570c51625a436d4b85e";
+    public static final String mob_Appkey = "27dba78fdf388";
+    public static final String mob_App_Secret = "27dba78fdf388";
 
 
     //微信登录
-    public static final String wechat_App_id = "wx055b79a81a71b0cb";
-    public static final String wechat_App_secret = "16bbef65347c71433ace880c00790b87";
+    public static final String wechat_App_id = "wxef35ece47731348d";
+    public static final String wechat_App_secret = "b00ff09e07173e377f0738649720a266";
 
 
     //QQ登录和分享
-    public static final String qq_App_id = "1107755097";
-    public static final String qq_App_secret = "KsIWMs9Q286L0PIy";
+    public static final String qq_App_id = "101502417";
+    public static final String qq_App_secret = "7de1c1733a81d3998f3b59e1711378eb";
 
 
     //徒弟包名
-    public static final String app_student_name = "zhuanyueba_";
+    public static final String app_student_name = "chaoyuehui_";
 
     //bugly
-    public static final String bugly_id = "5a730662f0";
+    public static final String bugly_id = "6bb06490c1";
 
 
+    //回复内容
 
 
 
@@ -92,7 +93,6 @@ public final class Systems {
     public static final String my_profit_type = "my_profit_type";
 
     public static final String go_activity_type = "go_activity_type";
-
 
     public static final String activity_type_profit = "activity_type_profit";
     public static final String activity_type_withdraw_list = "activity_type_withdraw_list";

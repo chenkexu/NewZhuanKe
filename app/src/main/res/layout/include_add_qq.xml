@@ -18,7 +18,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:textColor="@color/bg_red"
-        android:text="如有问题，请加QQ群：826248193"
+        android:text="如有问题，请加QQ群：883581805"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

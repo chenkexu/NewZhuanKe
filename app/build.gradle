@@ -7,7 +7,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion '26.0.0'
     defaultConfig {
-        applicationId "cn.orientdata.zhuanke"
+        applicationId "cn.orientdata.chaoyuehui"
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 100
@@ -20,10 +20,16 @@ android {
     }
     buildTypes {
         release {
+            zipAlignEnabled false
+            shrinkResources false  // 移除无用的resource文件
+            minifyEnabled false
             signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
+            zipAlignEnabled false
+            shrinkResources false  // 移除无用的resource文件
+            minifyEnabled false
             signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -53,7 +59,7 @@ android {
             def fileName
             if (outputFile != null && outputFile.name.endsWith('.apk')) {
                 if (variant.buildType.name.equals('release')) {
-                    fileName = "zyb${defaultConfig.versionName}" + ".apk";
+                    fileName = "cyh${defaultConfig.versionName}" + ".apk";
                 } else if (variant.buildType.name.equals('debug')) {
                     fileName = "wangrun_DEBUG${defaultConfig.versionName}.apk"
                 }
@@ -69,7 +75,7 @@ android {
 //    apkOutputFolder = new File("${project.buildDir}/outputs/channels");
         apkOutputFolder = new File("F:/APK/MakeAPK")
         // 定制渠道包的APK的文件名称
-        apkFileNameFormat = 'zhuanyueba_${channel}.apk';
+        apkFileNameFormat = 'chaoyuehui_${channel}.apk';
         // 渠道配置文件
         channelFile = new File("${project.getProjectDir()}/channel.txt")
     }
@@ -105,7 +111,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
-    compile 'com.android.support:appcompat-v7:27.1.0'
     //tab
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
     //打印日志

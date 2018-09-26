@@ -8,8 +8,10 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dfwr.zhuanke.zhuanke.R;
 import com.dfwr.zhuanke.zhuanke.bean.Article;
+import com.dfwr.zhuanke.zhuanke.util.DateTool;
 import com.dfwr.zhuanke.zhuanke.util.GlideUtil;
 import com.dfwr.zhuanke.zhuanke.util.SharedPreferencesUtil;
+import com.dfwr.zhuanke.zhuanke.util.TimeUtil;
 
 import java.util.List;
 
@@ -44,8 +46,16 @@ public class NewsAdapter extends BaseQuickAdapter<Article, BaseViewHolder> {
         if (!TextUtils.isEmpty(item.getTitle())) {
             helper.setText(R.id.item_project_list_title_tv, item.getTitle());
         }
-        helper.setText(R.id.tv_price, "点击分享赚" + price + "毛");
+
+        String timeFormatText = TimeUtil.getTimeFormatText(DateTool.getStringToDate(item.getTime(),DateTool.FORMAT_DATE_TIME));
+
+        if (timeFormatText!=null) {
+            helper.setText(R.id.tv_time, timeFormatText);
+        }
+
+
         helper.setText(R.id.tv_watch_sum, item.getClick() + "");
+        helper.setText(R.id.tv_price, price + "毛/条");
 
 
         if (SharedPreferencesUtil.getStringData(mContext, SharedPreferencesUtil.MESSAGE_ALREADY_LOOKED).contains(item.getAid() + "")) {

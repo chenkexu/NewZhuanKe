@@ -16,7 +16,7 @@
         android:layout_height="wrap_content">
         <ImageView
             android:scaleType="centerCrop"
-            android:src="@mipmap/seacrh_no_content"
+            android:src="@mipmap/search_no_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView

@@ -128,10 +128,19 @@ public class MasterFragment extends BaseTwoFragment<IHomeView,HomePresent<IHomeV
 
 
 
+
+
+    /****************
+     *
+     * 发起添加群流程。群号：潮阅汇官方群(883581805) 的 key 为： LPZsRwnFe0N5lxxEUod5TIadZvXxGx6Y
+     * 调用 joinQQGroup(LPZsRwnFe0N5lxxEUod5TIadZvXxGx6Y) 即可发起手Q客户端申请加群 潮阅汇官方群(883581805)
+     *
+     * @param key 由官网生成的key
+     * @return 返回true表示呼起手Q成功，返回fals表示呼起失败
+     ******************/
     public boolean joinQQGroup() {
-        String key = "jPgBTG3gAQVQklkf9xEWSxpkIaO9hcDt";
+        String key = "LPZsRwnFe0N5lxxEUod5TIadZvXxGx6Y";
         Intent intent = new Intent();
-//        intent.setData(Uri.parse("mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26k%3D" + key));
         intent.setData(Uri.parse("mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26k%3D" + key));
         // 此Flag可根据具体产品需要自定义，如设置，则在加群界面按返回，返回手Q主界面，不设置，按返回会返回到呼起产品界面    //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         try {
@@ -139,7 +148,6 @@ public class MasterFragment extends BaseTwoFragment<IHomeView,HomePresent<IHomeV
             return true;
         } catch (Exception e) {
             // 未安装手Q或安装的版本不支持
-            ToastUtils.showShort("未安装手Q或安装的版本不支持");
             return false;
         }
     }
@@ -164,11 +172,6 @@ public class MasterFragment extends BaseTwoFragment<IHomeView,HomePresent<IHomeV
     }
 
 
-
-
-
-
-
     @Override
     protected void initData() {
         super.initData();
@@ -188,8 +191,6 @@ public class MasterFragment extends BaseTwoFragment<IHomeView,HomePresent<IHomeV
         taskAdapter = new HomeAdapter(imagesAndTitles);
         recyclerView.setAdapter(taskAdapter);
         getUserData();
-
-
 
         taskAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override

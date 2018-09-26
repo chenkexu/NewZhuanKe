@@ -12,7 +12,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dfwr.zhuanke.zhuanke.R;
 import com.dfwr.zhuanke.zhuanke.adapter.RankListAdapter;
 import com.dfwr.zhuanke.zhuanke.base.BaseLazyFragment;
-import com.dfwr.zhuanke.zhuanke.base.LazyLoadFragment;
 import com.dfwr.zhuanke.zhuanke.bean.RankBean;
 import com.dfwr.zhuanke.zhuanke.mvp.contract.RankView;
 import com.dfwr.zhuanke.zhuanke.mvp.presenter.RankPresent;
@@ -31,7 +30,6 @@ public class RankListFragment extends BaseLazyFragment<RankView, RankPresent<Ran
         SwipeRefreshLayout.OnRefreshListener, RankView {
 
 
-    private ArrayList<LazyLoadFragment> mFragments = new ArrayList<>();
 
 
     RankListAdapter newsAdapter;
@@ -84,7 +82,7 @@ public class RankListFragment extends BaseLazyFragment<RankView, RankPresent<Ran
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         refreshLayout.setOnRefreshListener(this);//刷新
         newsAdapter = new RankListAdapter(mData,"1");
-        newsAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
+        newsAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         recyclerView.setAdapter(newsAdapter);
         onRefresh();
     }
@@ -124,7 +122,7 @@ public class RankListFragment extends BaseLazyFragment<RankView, RankPresent<Ran
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         refreshLayout.setOnRefreshListener(this);//刷新
         newsAdapter = new RankListAdapter(mData,"1");
-        newsAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
+        newsAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         recyclerView.setAdapter(newsAdapter);
     }
 

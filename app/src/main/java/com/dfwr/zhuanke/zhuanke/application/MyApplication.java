@@ -16,10 +16,6 @@ import com.lzy.okgo.cache.CacheEntity;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
 import com.mob.MobSDK;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.FormatStrategy;
-import com.orhanobut.logger.Logger;
-import com.orhanobut.logger.PrettyFormatStrategy;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 
@@ -37,6 +33,7 @@ import okhttp3.OkHttpClient;
 
 public class MyApplication extends Application {
 
+
     private static Context applicationContext;
     private UserBean loginBean;
     public static IWXAPI mWxApi;
@@ -48,22 +45,21 @@ public class MyApplication extends Application {
         //初始化bugly
         initBuglyCrash();
 
-
         initOkGo();
         MobSDK.init(this,Systems.mob_Appkey,Systems.mob_App_Secret);
         applicationContext = MyApplication.this.getApplicationContext();
         //工具类库
         Utils.init(this);
         SharedPreferencesTool.getInstance().init(this);
-        FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
-                .showThreadInfo(false)  // (Optional) Whether to show thread info or not. Default true
-                .methodCount(0)         // (Optional) How many method line to show. Default 2
-                .methodOffset(7)        // (Optional) Hides internal method calls up to offset. Default 5
-                .tag("okgo")   // (Optional) Global tag for every log. Default PRETTY_LOGGER
-                .build();
-        Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy) {
-
-        });
+//        FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
+//                .showThreadInfo(false)  // (Optional) Whether to show thread info or not. Default true
+//                .methodCount(0)         // (Optional) How many method line to show. Default 2
+//                .methodOffset(7)        // (Optional) Hides internal method calls up to offset. Default 5
+//                .tag("okgo")   // (Optional) Global tag for every log. Default PRETTY_LOGGER
+//                .build();
+//        Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy) {
+//
+//        });
 //        Logger.addLogAdapter(new AndroidLogAdapter() {
 //
 //        });

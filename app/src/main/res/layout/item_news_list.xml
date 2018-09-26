@@ -21,17 +21,9 @@
         android:orientation="horizontal"
         android:padding="10dp">
 
-        <ImageView
-            android:scaleType="centerCrop"
-            android:id="@+id/item_project_list_iv"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:contentDescription="@null"
-            android:src="@mipmap/ad_error" />
 
         <RelativeLayout
-            android:layout_marginLeft="10dp"
+
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5">
@@ -47,20 +39,22 @@
                 tools:text="【开源完整项目开源完整项目开源完整项目开源完整项目】diycode客户【开源完整项目】diycode客户【开源完整项目】diycode客户端" />
 
             <TextView
-                android:visibility="gone"
-                android:id="@+id/tv_price"
+                android:drawablePadding="2dp"
+                android:drawableLeft="@mipmap/time"
+                android:id="@+id/tv_time"
                 android:layout_alignParentBottom="true"
-                android:textColor="@color/bg_red"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-                android:textSize="15sp"
-                tools:text="点击分享赚1.5毛" />
+                android:textSize="12sp"
+                tools:text="" />
+
+
 
             <TextView
-
+                android:layout_alignTop="@+id/tv_price"
                 android:drawableLeft="@mipmap/eyes"
                 android:id="@+id/tv_watch_sum"
                 android:layout_alignParentRight="true"
@@ -72,7 +66,30 @@
                 android:maxLines="1"
                 android:textSize="@dimen/sp_12"
                 tools:text="123456" />
+
+            <com.hanks.htextview.rainbow.RainbowTextView
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@id/tv_time"
+                android:layout_toLeftOf="@id/tv_watch_sum"
+                android:id="@+id/tv_price"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textSize="12sp"
+                tools:text="0.150元/条" />
         </RelativeLayout>
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:scaleType="centerCrop"
+            android:id="@+id/item_project_list_iv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:contentDescription="@null"
+            android:src="@mipmap/ad_error" />
     </LinearLayout>
 
 </android.support.v7.widget.CardView>
